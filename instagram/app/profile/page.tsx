@@ -6,13 +6,41 @@ import Button from '@mui/material/Button';
 
 import "./page.css";
 
+import React, { useState } from 'react';
+
 const profile = () => {
+
+    const [dialog, setDialog] = useState(false);
+  const [imageSrc, setImageSrc] = useState(
+    'https://www.sarkarinaukriexams.com/images/post/1670771584desola-lanre-ologun-IgUR1iX0mqM-unsplash_(1).jpg'
+  );
+
+  const toggleDialog = () => {
+    setDialog(!dialog);
+  };
+    
     return (
         <>
         <Nav/>
           <header>
             <div className="container">
               <div className="profile">
+
+              {/* <div>
+      <button onClick={toggleDialog}>Show Popup Image</button>
+      <p></p>
+      {dialog && (
+        <div className="dialog">
+          <div className="dialog-content">
+            <button onClick={toggleDialog} className="close-icon">
+              &times;
+            </button>
+            <img src={imageSrc} alt="Popup Image" />
+          </div>
+        </div>
+      )}
+    </div> */}
+
                 
               {/* <div className="cropper">
                     <span className="text">
@@ -80,24 +108,43 @@ const profile = () => {
             <div className="container">
               <div className="gallery">
 
-                <div className="grid grid-cols-3 gap-4 place-items-stretch h-56 ...">
-                    <div className="gallery-item" tabIndex={0}>
+            <div className="grid grid-cols-3 gap-2 place-items-stretch h-56 ...">
+                
+                <button onClick={toggleDialog}>
+                <div className="gallery-item" tabIndex={0}>
                         <img
-                            src="https://images.unsplash.com/photo-1690207714547-6e76b0e61b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80?w=500&h=500&fit=crop"
+                            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
                             className="gallery-image"
                             alt=""
                         />
                         <div className="gallery-item-info">
-                            <ul>
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i className="fas fa-heart" aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 56
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i className="fas fa-comment" aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 2
                             </li>
-                            </ul>
+                        </div>
+                </div>
+                </button>
+                    
+                    <div className="gallery-item" tabIndex={0}>
+                        <img
+                            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+                            className="gallery-image"
+                            alt=""
+                        />
+                        <div className="gallery-item-info">
+                            <li className="gallery-item-likes">
+                                <span className="visually-hidden">Likes:</span>
+                                <i aria-hidden="true"></i> 56
+                            </li>
+                            <li className="gallery-item-comments">
+                                <span className="visually-hidden">Comments:</span>
+                                <i  aria-hidden="true"></i> 2
+                            </li>
                         </div>
                     </div>
                     
@@ -108,18 +155,17 @@ const profile = () => {
                             alt=""
                         />
                         <div className="gallery-item-info">
-                            <ul>
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i className="fas fa-heart" aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 56
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i className="fas fa-comment" aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 2
                             </li>
-                            </ul>
                         </div>
                     </div>
+
                     <div className="gallery-item" tabIndex={0}>
                         <img
                             src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
@@ -127,18 +173,17 @@ const profile = () => {
                             alt=""
                         />
                         <div className="gallery-item-info">
-                            <ul>
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i className="fas fa-heart" aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 56
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i className="fas fa-comment" aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 2
                             </li>
-                            </ul>
                         </div>
                     </div>
+
                     <div className="gallery-item" tabIndex={0}>
                         <img
                             src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
@@ -146,56 +191,35 @@ const profile = () => {
                             alt=""
                         />
                         <div className="gallery-item-info">
-                            <ul>
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i className="fas fa-heart" aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 56
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i className="fas fa-comment" aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 2
                             </li>
-                            </ul>
                         </div>
                     </div>
-                    <div className="gallery-item" tabIndex={0}>
+
+                   <div className="gallery-item" tabIndex={0}>
                         <img
                             src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
                             className="gallery-image"
                             alt=""
                         />
                         <div className="gallery-item-info">
-                            <ul>
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i className="fas fa-heart" aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 56
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i className="fas fa-comment" aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 2
                             </li>
-                            </ul>
                         </div>
                     </div>
-                    <div className="gallery-item" tabIndex={0}>
-                        <img
-                            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-                            className="gallery-image"
-                            alt=""
-                        />
-                        <div className="gallery-item-info">
-                            <ul>
-                            <li className="gallery-item-likes">
-                                <span>Likes:</span>
-                                <i></i> 56
-                            </li>
-                            <li className="gallery-item-comments">
-                                <span>Comments:</span>
-                                <i></i> 10
-                            </li>
-                            </ul>
-                        </div>
-                    </div>
+
 
                 </div>
 
@@ -203,6 +227,8 @@ const profile = () => {
                
                 {/* Add other gallery items similarly */}
               </div>
+
+              
            
               {/* End of gallery */}
                  {/* <div className="loader"></div> */}
@@ -214,6 +240,8 @@ const profile = () => {
         </>
       );
     };
+
+
 
 export default profile;
 
