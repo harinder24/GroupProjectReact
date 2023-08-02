@@ -1,13 +1,7 @@
 /* Jean CSS*/
 
-.pics{
-    cursor: pointer;
-    
-    
-}
-
-.pics:hover{
-    box-shadow: inset 0px 0px 20px 10px #3a3939;
-    
+#pichover:hover{
+  
+   background-color: rgba(0,0,0,0.3);
     
 }

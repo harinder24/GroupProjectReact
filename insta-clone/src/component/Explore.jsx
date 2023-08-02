@@ -1,46 +1,51 @@
 import NavBar from './Navbar';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import './explore.css'
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Explore = () => {
     const exploreImgs =[
         {
             image: "src/public/eximg/cars.jpg",
-            text: "4"
+            
         },
         {
             image: "src/public/eximg/meme.png",
-            text: "55"
+            
         },
         {
-            image: "https://images.unsplash.com/photo-1525351326368-efbb5cb6814d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+            image: "https://images.unsplash.com/photo-1525351326368-efbb5cb6814d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+            
         },
         {
-            image: "https://plus.unsplash.com/premium_photo-1677087121676-2acaaae5b3c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+            image: "https://plus.unsplash.com/premium_photo-1677087121676-2acaaae5b3c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+            
         },
         {
-            image: "src/public/eximg/shoes.png"
+            image: "src/public/eximg/shoes.png",
+            
         },
         {
-            image: "https://images.unsplash.com/photo-1617191519105-d07b98b10de6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+            image: "https://images.unsplash.com/photo-1617191519105-d07b98b10de6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+           
         },
         {
-            image: "https://images.unsplash.com/photo-1579158951805-53f80485ed44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+            image: "https://images.unsplash.com/photo-1579158951805-53f80485ed44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
         },
         {
-            image: "https://images.unsplash.com/photo-1644421439741-712c7fde7e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=891&q=80"
+            image: "https://images.unsplash.com/photo-1644421439741-712c7fde7e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=891&q=80",
         },
         {
-            image: "src/public/eximg/twt2.png"
+            image: "src/public/eximg/twt2.png",
         },
         {
-            image: "https://images.unsplash.com/photo-1597589022928-bb4002c099ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+            image: "https://images.unsplash.com/photo-1597589022928-bb4002c099ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
         },
         {
-            image: "https://images.unsplash.com/photo-1615485737651-580c9159c89a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=881&q=80"
+            image: "https://images.unsplash.com/photo-1615485737651-580c9159c89a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=881&q=80",
         },
         {
-            image: "https://plus.unsplash.com/premium_photo-1661583774985-f952ba8b7a71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+            image: "https://plus.unsplash.com/premium_photo-1661583774985-f952ba8b7a71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
         }
     ]
 
@@ -79,17 +84,24 @@ const Explore = () => {
                 {
                     exploreImgs.map((photo, index) =>{
                         return(
-                            <div className='pics'>
+                            <div className='pics relative'>
                             <img
                                 src={photo.image}
                                 key={index}
                                 alt={photo.text}
-                                //className='w-full h-full object-cover '
-                                className='pics'
-                                
-                                 
+                                className='w-full h-full object-cover z-10'
                             />
                             
+                            <div  id='pichover' className='w-full h-full absolute top-0 z-20'>
+
+
+
+
+                            <div class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
+                                <FavoriteIcon/>
+                                
+                                </div>
+                            </div>
                             </div>
                             
                             
