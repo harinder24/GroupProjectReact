@@ -7,3 +7,12 @@
             display: none;
         }
     }
+
+#mainPageMainContent{
+    height: 100svh;
+    overflow: auto;
+}
+
+#mainPageMainContent::-webkit-scrollbar { 
+    display: none; 
+    }

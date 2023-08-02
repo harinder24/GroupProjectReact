@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/nav"
-  ],
+, "app/theme-provider.js", "app/signup/page.js"  ],
   "exclude": ["node_modules"]
 }

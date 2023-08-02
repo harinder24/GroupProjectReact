@@ -21,7 +21,7 @@ const Home: React.FC = () => {
 
           </div >
           
-        <div className=" flex-grow flex justify-center gap-x-[64px] pt-12 max-[770px]:pt-0">
+        <div id="mainPageMainContent" className=" flex-grow flex justify-center gap-x-[64px] pt-12 max-[770px]:pt-0">
         <div className='flex flex-col justify-start items-center'>
          
         <div className='h-[64px] flex flex-row w-screen p-4 mb-5 secondaryNav items-center justify-between border-[var(--border)] border-b-[1px] border-solid'>
