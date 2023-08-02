@@ -404,3 +404,7 @@ img {
 #profileMainView::-webkit-scrollbar { 
     display: none; 
 }
+
+#exploreMainContect::-webkit-scrollbar { 
+    display: none; 
+}

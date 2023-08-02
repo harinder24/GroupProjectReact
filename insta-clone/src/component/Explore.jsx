@@ -1,12 +1,13 @@
 import NavBar from './Navbar';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import './style.css'
 
 const Explore = () => {
     return(
         <div className="flex dark:bg-black">
         <NavBar/>
 
-        <div className=" container px-2 flex flex-col mx-auto">
+        <div id='exploreMainContect' className=" container px-2 flex flex-col mx-auto h-screen overflow-auto">
 
             {/* Search Bar */}
             <div className="flex flex-row h-8 items-center m-5 bg-gray-200 box-border rounded-[8px] px-2 ">
