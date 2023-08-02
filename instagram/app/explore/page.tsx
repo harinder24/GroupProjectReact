@@ -7,7 +7,7 @@ const explore = () => {
         <div className="flex dark:bg-black">
         <Nav/>
 
-        <div className=" container flex flex-col mx-auto">
+        <div className=" container px-2 flex flex-col mx-auto">
 
             {/* Search Bar */}
             <div className="flex flex-row h-8 items-center m-5 bg-gray-200 box-border rounded-[8px] px-2 ">
