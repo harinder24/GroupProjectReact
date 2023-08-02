@@ -38,8 +38,8 @@ const NavBar = () => {
         <div className="pl-4 text-xs max-[1264px]:hidden ">Search</div>
       </div>
       </Link>
-      <Link to="/explore">
-      <div className="p-3  flex items-center max-[770px]:hidden rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+      <Link to="/explore" className="p-3  flex items-center max-[770px]:hidden rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+      <div >
         <ExploreOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden ">Expore</div>
       </div>
