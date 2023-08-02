@@ -93,10 +93,6 @@ const Explore = () => {
                             />
                             
                             <div  id='pichover' className='w-full h-full absolute top-0 z-20'>
-
-
-
-
                             <div class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
                                 <FavoriteIcon/>
                                 
