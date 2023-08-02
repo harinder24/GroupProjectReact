@@ -127,7 +127,7 @@ const signup = (props: Props) => {
             <span>
               <p className=" text-black m-[20px] text-[14px] text-center">
                  Have an account?{" "}
-                <a className=" text-sky-500" href="">
+                <a className=" text-sky-500" href="/login">
                   Log in
                 </a>
               </p>

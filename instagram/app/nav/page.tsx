@@ -18,11 +18,13 @@ const Nav = (props: Props) => {
   return (
     <nav className="px-3 pt-2 pb-5 bg-white flex flex-col  box-border gap-y-2 w-[244px] h-screen border-r-[1px] border-solid border-[var(--border)]  z-[5] max-[1264px]:w-[72.8px] max-[770px]:fixed max-[770px]:w-full max-[770px]:flex-row max-[770px]:bottom-0 max-[770px]:h-fit max-[770px]:p-0 max-[770px]:justify-evenly dark:bg-black navBartopborder">
       <div className="mt-2 px-3 pt-[25px] mb-[19px] box-border max-[770px]:hidden rounded-lg min-[770px]:max-[1264px]:p-3 hover:min-[770px]:max-[1264px]:bg-gray-200 hover:dark:min-[770px]:max-[1264px]:bg-zinc-800 cursor-pointer logoHoveNav">
+        <a href="/login">
         <img
           src="/instagramlogotext.png"
           className="h-[29px] w-[103px] object-cover object-navinstalogo max-[1264px]:hidden dark:object-navinstalogodark"
           alt=""
         />
+        </a>
         <InstagramIcon className="min-[1264px]:hidden   " />
       </div>
 
