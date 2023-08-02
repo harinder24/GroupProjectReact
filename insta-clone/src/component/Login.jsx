@@ -1,20 +1,26 @@
 import { useContext, useEffect, useState } from "react";
 import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import Context from "../context";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import { db, fb, auth } from "../config";
 
+
 const Login  = () => {
+ 
     const navigate = useNavigate()
-    const { setUserBasicInfo } = useContext(Context);
+    const {userBasicInfo, setUserBasicInfo } = useContext(Context);
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = ["src/public/image1.png", "src/public/image2.png", "src/public/image3.png", "src/public/image4.png"];
-  
+  useEffect(()=>{
+    if(userBasicInfo.email != null){
+      navigate('/')
+    }
+  },[])
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -74,7 +80,8 @@ const Login  = () => {
                 } else {
                   const userDoc = querySnapshot.docs[0];
                   const userData = userDoc.data();
-                  setUserBasicInfo(userData)
+                  console.log(userData);
+                  setUserBasicInfo({email: userData.email, fullname: userData.fullname, username: userData.username})
                   navigate('/')
                 
                 }
@@ -186,9 +193,9 @@ const Login  = () => {
             <span>
               <p className=" text-black m-[20px] text-[14px] text-center">
                 Don't have an account?{" "}
-                <a className=" text-sky-500" href="">
+                <Link className=" text-sky-500" to="/signup">
                   Sign up
-                </a>
+                </Link>
               </p>
             </span>
           </div>

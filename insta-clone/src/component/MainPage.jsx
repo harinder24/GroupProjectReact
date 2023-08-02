@@ -8,8 +8,19 @@ import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import { useContext, useEffect } from 'react';
+import Context from '../context';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
+
+  const { userBasicInfo } = useContext(Context);
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(userBasicInfo.email == null){
+      navigate('/login')
+    }
+  },[])
 
   return (
     <>

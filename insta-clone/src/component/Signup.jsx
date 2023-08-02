@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const navigate = useNavigate()
-    const { setUserBasicInfo } = useContext(Context);
+    const { setUserBasicInfo , userBasicInfo } = useContext(Context);
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("");
@@ -23,6 +23,11 @@ const Signup = () => {
         console.log(result.user);
       })
     }
+    useEffect(()=>{
+      if(userBasicInfo.email != null){
+        navigate('/')
+      }
+    },[])
     async function signUpHandler(event){
         event.preventDefault()
 
