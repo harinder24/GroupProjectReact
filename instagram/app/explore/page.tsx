@@ -4,7 +4,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const explore = () => {
     return(
-        <div className="flex">
+        <div className="flex dark:bg-black">
         <Nav/>
 
         <div className=" container flex flex-col mx-auto">

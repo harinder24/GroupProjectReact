@@ -20,7 +20,7 @@ const profile = () => {
   };
     
     return (
-        <div className="flex min-h-screen">
+        <div className="flex dark:bg-black min-h-screen">
          <div className=" sticky top-0 max-[770px]:relative max-[770px]:top-auto">
 
 <Nav />
