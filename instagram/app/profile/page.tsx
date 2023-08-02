@@ -20,7 +20,7 @@ const profile = () => {
   };
     
     return (
-        <div className="flex min-h-screen">
+        <div className="flex dark:bg-black min-h-screen">
          <div className=" sticky top-0 max-[770px]:relative max-[770px]:top-auto">
 
 <Nav />
@@ -125,11 +125,11 @@ const profile = () => {
                         <div className="gallery-item-info">
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 75
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i  aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 4
                             </li>
                         </div>
                 </div>
@@ -137,90 +137,90 @@ const profile = () => {
                     
                     <div className="gallery-item" tabIndex={0}>
                         <img
-                            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+                            src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80?w=500&h=500&fit=crop"
                             className="gallery-image"
                             alt=""
                         />
                         <div className="gallery-item-info">
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 1,678
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i  aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 34
                             </li>
                         </div>
                     </div>
                     
                     <div className="gallery-item" tabIndex={0}>
                         <img
-                            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+                            src="https://images.unsplash.com/photo-1508515053963-70c7cc39dfb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80?w=500&h=500&fit=crop"
                             className="gallery-image"
                             alt=""
                         />
                         <div className="gallery-item-info">
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 47
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i  aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 9
                             </li>
                         </div>
                     </div>
 
                     <div className="gallery-item" tabIndex={0}>
                         <img
-                            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+                            src="https://plus.unsplash.com/premium_photo-1669018131050-e7b5719d201b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&?w=500&h=500&fit=crop"
                             className="gallery-image"
                             alt=""
                         />
                         <div className="gallery-item-info">
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 5
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i  aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 0
                             </li>
                         </div>
                     </div>
 
                     <div className="gallery-item" tabIndex={0}>
                         <img
-                            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+                            src="https://images.unsplash.com/photo-1598214886806-c87b84b7078b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&?w=500&h=500&fit=crop"
                             className="gallery-image"
                             alt=""
                         />
                         <div className="gallery-item-info">
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 83
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i  aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 0
                             </li>
                         </div>
                     </div>
 
                    <div className="gallery-item" tabIndex={0}>
                         <img
-                            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+                            src="https://images.unsplash.com/photo-1589251204996-3367cc27f084?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=855&q=80?w=500&h=500&fit=crop"
                             className="gallery-image"
                             alt=""
                         />
                         <div className="gallery-item-info">
                             <li className="gallery-item-likes">
                                 <span className="visually-hidden">Likes:</span>
-                                <i aria-hidden="true"></i> 56
+                                <i aria-hidden="true"></i> 2
                             </li>
                             <li className="gallery-item-comments">
                                 <span className="visually-hidden">Comments:</span>
-                                <i  aria-hidden="true"></i> 2
+                                <i  aria-hidden="true"></i> 1
                             </li>
                         </div>
                     </div>

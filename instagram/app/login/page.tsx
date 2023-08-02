@@ -30,7 +30,7 @@ const Login: React.FC = () => {
     "Meta Verified",
   ];
   return (
-    <section className="min-h-screen bg-white">
+    <section className="min-h-screen bg-white ">
       <article className=" py-8 flex justify-center mx-auto w-full">
         <div className="bg-phone mb-2 bg-[length:468.32px_634.15px;] h-[581.15px] basis-[380.32px] self-center mr-8 bg-phoneimg box-border flex-grow-0 max-[785px]:hidden relative">
           <div className="relative ml-[113px] pt-0 flex flex-col box-border mt-[27px] align-baseline">

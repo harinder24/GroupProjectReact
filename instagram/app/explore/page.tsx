@@ -4,10 +4,10 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const explore = () => {
     return(
-        <div className="flex">
+        <div className="flex dark:bg-black">
         <Nav/>
 
-        <div className=" container flex flex-col mx-auto">
+        <div className=" container px-2 flex flex-col mx-auto">
 
             {/* Search Bar */}
             <div className="flex flex-row h-8 items-center m-5 bg-gray-200 box-border rounded-[8px] px-2 ">
@@ -56,7 +56,7 @@ const explore = () => {
                     <img src="https://images.unsplash.com/photo-1508515053963-70c7cc39dfb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt=""/>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1589251204996-3367cc27f084?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=855&q=80" alt=""/>
+                    <img src="https://images.unsplash.com/photo-1617191519105-d07b98b10de6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt=""/>
                 </div>
                 <div>
                     <img src="https://images.unsplash.com/photo-1579158951805-53f80485ed44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt=""/>
@@ -70,6 +70,13 @@ const explore = () => {
                 <div>
                     <img src="https://images.unsplash.com/photo-1597589022928-bb4002c099ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt=""/>
                 </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1615485737651-580c9159c89a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=881&q=80" alt=""/>
+                </div>
+                <div>
+                    <img src="https://plus.unsplash.com/premium_photo-1661583774985-f952ba8b7a71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt=""/>
+                </div>
+                <br></br>
                 </div>
 
 
