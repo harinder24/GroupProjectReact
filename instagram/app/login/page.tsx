@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const Login: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -80,9 +81,11 @@ const Login: React.FC = () => {
                       </label>
                     </div>
                   </div>
+                {/* <Link href="/"> */}
                   <button className="w-[265px] bg-sky-500 text-white py-1 mt-2 rounded-[7px] hover:bg-sky-600 font-semibold max-[380px]:w-full">
                     Log in
                   </button>
+                  {/* </Link> */}
                 </div>
               </form>
             </div>
@@ -105,7 +108,7 @@ const Login: React.FC = () => {
             <span>
               <p className=" text-black m-[20px] text-[14px] text-center">
                 Don't have an account?{" "}
-                <a className=" text-sky-500" href="">
+                <a className=" text-sky-500" href="/signup">
                   Sign up
                 </a>
               </p>
