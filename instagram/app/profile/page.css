@@ -1,7 +1,7 @@
-
+/* 
 :root {
     font-size: 10px;
-}
+} */
 
 *,
 *::before,
@@ -9,13 +9,7 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: "Open Sans", Arial, sans-serif;
-    min-height: 100vh;
-    background-color: #fafafa;
-    color: #262626;
-    padding-bottom: 3rem;
-}
+
 
 img {
     display: block;
@@ -103,7 +97,7 @@ img {
     background-color: rgb(218, 218, 218);
     border-radius: 0.8rem;
     padding: 0 2.4rem;
-    margin-left: 2rem;
+
 }
 /* 
 .settings-btn{
@@ -418,3 +412,16 @@ Remove or comment-out the code block below to see how the browser will fall-back
     color: #999;
     cursor: pointer;
   }
+
+
+
+#profileMainView::-webkit-scrollbar { 
+    display: none; 
+}
+
+    /* need to fix header
+    make profiler pic bigger
+    make profile info smaller
+    add 3 diff pages, saved and tagged
+     */
+    

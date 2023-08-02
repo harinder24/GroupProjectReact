@@ -20,10 +20,15 @@ const profile = () => {
   };
     
     return (
-        <>
-        <Nav/>
+        <div className="flex min-h-screen">
+         <div className=" sticky top-0 max-[770px]:relative max-[770px]:top-auto">
+
+<Nav />
+
+      </div >
+        <div id="profileMainView" className="box-border h-screen flex flex-col overflow-auto no-scrollbar">
           <header>
-            <div className="container">
+            <div className="container ">
               <div className="profile">
 
               {/* <div>
@@ -57,7 +62,7 @@ const profile = () => {
 
                 {/* <Avatar alt="Remy Sharp" src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" /> */}
 
-                <div className="profile-user-settings">
+                <div className="profile-user-settings flex justify-between gap-2">
                   <h1 className="profile-user-name">Betty Merid</h1>
 
                   
@@ -66,9 +71,9 @@ const profile = () => {
                   <button className="btn profile-edit-btn">View archive</button>
 
 
-                  <button> </button>
+                  <button>  <img className="setting-icon" src="https://pic.onlinewebfonts.com/thumbnails/icons_276805.svg" style={{width:'25px'}}/> </button>
 
-                  <img className="setting-icon" src="https://pic.onlinewebfonts.com/thumbnails/icons_276805.svg" style={{maxWidth:'5%'}}/>
+                
                   
                   {/* <Button className="settings-btn" style={{backgroundImage:"url(https://pic.onlinewebfonts.com/thumbnails/icons_276805.svg)",backgroundSize:"cover", width:"100px", height:"100px"}}></Button> */}
 
@@ -110,7 +115,7 @@ const profile = () => {
 
             <div className="grid grid-cols-3 gap-2 place-items-stretch h-56 ...">
                 
-                <button onClick={toggleDialog}>
+                {/* <button onClick={toggleDialog}> */}
                 <div className="gallery-item" tabIndex={0}>
                         <img
                             src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
@@ -128,7 +133,7 @@ const profile = () => {
                             </li>
                         </div>
                 </div>
-                </button>
+                {/* </button> */}
                     
                     <div className="gallery-item" tabIndex={0}>
                         <img
@@ -237,7 +242,8 @@ const profile = () => {
 
             {/* End of container */}
           </main>
-        </>
+          </div>
+        </div>
       );
     };
 
