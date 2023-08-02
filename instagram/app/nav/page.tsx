@@ -26,18 +26,22 @@ const Nav = (props: Props) => {
         <InstagramIcon className="min-[1264px]:hidden   " />
       </div>
 
+      <Link href="/">
       <div className="p-3  flex items-center  rounded-lg hover:min-[770px]:bg-gray-200 dark:hover:min-[770px]:bg-zinc-800 cursor-pointer logoHoveNav">
         <HomeOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Home</div>
       </div>
+      </Link>
       <div className="p-3  flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <SearchIcon className="w-[24px] h-[24px]" />
         <div className="pl-4 text-xs max-[1264px]:hidden ">Search</div>
       </div>
+      <Link href="/explore">
       <div className="p-3  flex items-center max-[770px]:hidden rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <ExploreOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden ">Expore</div>
       </div>
+      </Link>
       <div className="p-3  flex items-center rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <FeaturedVideoOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Reels</div>
