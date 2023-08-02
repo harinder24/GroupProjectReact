@@ -1,7 +1,3 @@
-/* 
-:root {
-    font-size: 10px;
-} */
 
 *,
 *::before,
@@ -22,15 +18,6 @@ img {
     padding: 0 2rem;
 }
 
-/* .btn {
-    display: inline-block;
-    font: inherit;
-    background: none;
-    border: none;
-    color: inherit;
-    padding: 0;
-    cursor: pointer;
-} */
 
 .btn:hover{
     background-color: #acacac;
@@ -40,15 +27,6 @@ img {
     outline: 0.5rem auto #4d90fe;
 }
 
-/* .visually-hidden {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-} */
-
-/* Profile Section */
 
 .profile {
     padding: 5rem 0;
@@ -99,14 +77,6 @@ img {
     padding: 0 2.4rem;
 
 }
-/* 
-.settings-btn{
-    font-size: 1.4rem;
-    line-height: 1.8;
-    border-radius: 0.8rem;
-    padding: 0 2.4rem;
-    margin-left: 2rem;
-} */
 
 .profile-settings-btn {
     font-size: 2rem;
@@ -142,7 +112,6 @@ img {
     font-weight: 600;
 }
 
-/* Gallery Section */
 
 .gallery {
     display: flex;
@@ -299,21 +268,12 @@ img {
     }
 }
 
-/* Spinner Animation */
 
 @keyframes loader {
     to {
         transform: rotate(360deg);
     }
 }
-
-/*
-
-The following code will only run if your browser supports CSS grid.
-
-Remove or comment-out the code block below to see how the browser will fall-back to flexbox & floated styling. 
-
-*/
 
 
 
