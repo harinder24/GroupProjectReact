@@ -105,7 +105,13 @@ try {
             const docData = {
               email: email,
               username: username,
-              fullname: fullName
+              fullname: fullName,
+              profileimg: "",
+              likes: [],
+              following:{list:[], total: 0},
+              followers:{list:[], total: 0},
+              posts:[],
+              saved:[]
           };
           await setDoc(doc(db, "user", username), docData);
             setUserBasicInfo(docData)

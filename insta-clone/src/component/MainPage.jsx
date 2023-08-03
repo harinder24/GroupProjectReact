@@ -1,173 +1,464 @@
-
-
-import './style.css'
-import NavBar from "./Navbar"
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
-import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import "./style.css";
+import NavBar from "./Navbar";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
+import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import { useContext, useEffect } from 'react';
-import Context from '../context';
-import { useNavigate } from 'react-router-dom';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useContext, useEffect, useState } from "react";
+import Context from "../context";
+import { useNavigate } from "react-router-dom";
+import {
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  increment,
+  updateDoc,
+} from "firebase/firestore";
+import { db } from "../config";
 
 const MainPage = () => {
-
   const { userBasicInfo } = useContext(Context);
-  const navigate = useNavigate()
-  useEffect(()=>{
-    if(userBasicInfo.email == null){
-      navigate('/login')
-    }
-  },[])
+  const [randomPost, setRandomPost] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchRandomDocuments = async () => {
+      if (userBasicInfo.email == null) {
+        navigate("/login");
+      } else {
+        const random = await getRandomDocuments("post", 20);
+        setRandomPost(random);
+      }
+    };
+    fetchRandomDocuments();
+  }, []);
 
+  useEffect(() => {
+    console.log(randomPost);
+  }, [randomPost]);
+
+  const getRandomDocuments = async (collectionName, numDocuments) => {
+    const collectionRef = collection(db, collectionName);
+
+    // Step 1: Get the total count of documents in the collection
+    const querySnapshot = await getDocs(collectionRef);
+    const totalDocuments = querySnapshot.size;
+
+    // Step 2: Generate random indexes and fetch documents based on those indexes
+    const randomIndexes = [];
+    while (
+      randomIndexes.length < numDocuments &&
+      randomIndexes.length < totalDocuments
+    ) {
+      const randomIndex = Math.floor(Math.random() * totalDocuments);
+      if (!randomIndexes.includes(randomIndex)) {
+        randomIndexes.push(randomIndex);
+      }
+    }
+
+    // Fetch the documents using the random indexes
+    const randomDocuments = [];
+    for (const index of randomIndexes) {
+      const snapshot = querySnapshot.docs[index];
+      randomDocuments.push({ id: snapshot.id, data: snapshot.data() });
+    }
+
+    return randomDocuments;
+  };
+
+  if (!randomPost) {
+    return <div></div>;
+  }
   return (
     <>
-  
       <div className="flex bg-white dark:bg-black min-h-screen">
-        
         <div className=" sticky top-0 max-[770px]:relative max-[770px]:top-auto">
-
-    <NavBar />
-
-          </div >
-          
-        <div id="mainPageMainContent" className=" flex-grow flex justify-center gap-x-[64px] pt-12 max-[770px]:pt-0">
-        <div className='flex flex-col justify-start items-center'>
-         
-        <div className='hidden h-[64px] max-[770px]:flex flex-row w-screen p-4 mb-5 secondaryNav items-center justify-between border-[var(--border)] border-b-[1px] border-solid '>
-          <img src="src/public/instagramlogotext.png" className=' h-[29px] w-[103px] object-cover object-navinstalogo dark:object-navinstalogodark ' alt="" />
-          <div className='flex gap-2' >
-          <AddBoxOutlinedIcon className='' />
-          <FavoriteBorderOutlinedIcon className='' />
-          </div>
+          <NavBar />
         </div>
-          
-          <div className="w-[630px] flex flex-col max-[640px]:w-screen" >
-          
-              <div id="InstaStories" className=" w-full flex flex-row gap-4 overflow-auto pb-4 ">
-                
-                <Story name="Jidion" num={Math.floor(Math.random(87,1000) * 20)}/><Story name="kai" num={Math.floor(Math.random(67,1000) *56)}/><Story name="drako" num={Math.floor(Math.random(53,1000) * 88)}/><Story name="yeet" num={Math.floor(Math.random(17,1000) * 95)}/><Story name="pablo" num={Math.floor(Math.random(121,1000) * 78)}/><Story name="coco" num={Math.floor(Math.random(143,1000) * 51)}/><Story name="melon" num={Math.floor(Math.random(11,1000)  *65)}/><Story num={Math.floor(Math.random(55,1000) *88)}/><Story num={Math.floor(Math.random(8,1000) *99)}/><Story num={Math.floor(Math.random(4,1000)* 73)}/><Story num={Math.floor(Math.random(1,800)* 3)}/><Story num={Math.floor(Math.random(1,900) *6)}/><Story num={Math.floor(Math.random(1,100))}/>
 
+        <div
+          id="mainPageMainContent"
+          className=" flex-grow flex justify-center gap-x-[64px] pt-12 max-[770px]:pt-0"
+        >
+          <div className="flex flex-col justify-start items-center">
+            <div className="hidden h-[64px] max-[770px]:flex flex-row w-screen p-4 mb-5 secondaryNav items-center justify-between border-[var(--border)] border-b-[1px] border-solid ">
+              <img
+                src="src/public/instagramlogotext.png"
+                className=" h-[29px] w-[103px] object-cover object-navinstalogo dark:object-navinstalogodark "
+                alt=""
+              />
+              <div className="flex gap-2">
+                <AddBoxOutlinedIcon className=" cursor-pointer" />
+                <FavoriteBorderOutlinedIcon className=" cursor-pointer" />
               </div>
-             
-          </div>
-          <PicPost/><PicPost/>
-          </div>
-          <div className='w-[320px] flex flex-col max-[1160px]:hidden'>
-               <div className='w-full h-[56px] mb-2 flex justify-between items-center'>
-                <div className='flex flex-row gap-3 items-center'>
-                    <img className='h-[56px] w-[56px] object-cover rounded-full' src="https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1" alt="" />
-                    <div className=' font-semibold text-sm'>Yeee.hawww</div>
-                </div>
-                <div className='font-semibold text-xs text-sky-500'>
-                  Switch
-                </div>
-               </div>
-               <div className='w-full flex justify-between items-center mb-[10px]'>
-                  <div className='font-semibold text-sm text-gray-500'>
-                      Suggestions for you
-                  </div>
-                  <div className='text-xs font-semibold'>
-                      See all
-                  </div>
-               </div>
-               <Suggestions/><Suggestions/><Suggestions/><Suggestions/>
+            </div>
 
-               <div className='mt-6 text-[12px] text-gray-300 w-full'>
-                About &#8226; Help &#8226; Press &#8226; API &#8226; Jobs &#8226; Privacy &#8226; Terms &#8226; Locations &#8226; Language &#8226; Meta Verified
-               </div>
+            <div className="w-[630px] flex flex-col max-[640px]:w-screen">
+              <div
+                id="InstaStories"
+                className=" w-full flex flex-row gap-4 overflow-auto pb-4 "
+              >
+                <Story
+                  name="Jidion"
+                  num="https://images.unsplash.com/photo-1677440077380-c4142a2eda83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8NnNNVmpUTFNrZVF8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                <Story
+                  name="kai"
+                  num="https://images.unsplash.com/photo-1677209405268-449bc26ba9bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDd8NnNNVmpUTFNrZVF8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                <Story
+                  name="drako"
+                  num="https://images.unsplash.com/photo-1676594808583-68cb10fdbb17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8NnNNVmpUTFNrZVF8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                <Story
+                  name="yeet"
+                  num="https://images.unsplash.com/photo-1659132814891-ef346422b339?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDl8NnNNVmpUTFNrZVF8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                <Story
+                  name="pablo"
+                  num="https://images.unsplash.com/photo-1690736543788-146c81dfb215?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIyfDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                <Story
+                  name="coco"
+                  num="https://images.unsplash.com/photo-1690701967621-7cc82cd68a5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI1fDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                <Story
+                  name="melon"
+                  num="https://images.unsplash.com/photo-1690475565796-e1c097a15fe8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDMxfDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                />
+                <Story num="https://images.unsplash.com/photo-1690491979107-79f75df408ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI5fDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" />
+                <Story num="https://images.unsplash.com/photo-1690491979107-79f75df408ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI5fDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" />
+                <Story num="https://images.unsplash.com/photo-1690491979107-79f75df408ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI5fDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" />
+              </div>
+            </div>
+            {randomPost.map((post) => {
+              return (
+      
+                // post.data.type === "image" ? 
+                <PicPost
+                key={post.id}
+                url={post.data.url}
+                id={post.id}
+                numcomment={post.data.numcomment}
+                comment={post.data.comment}
+                user={post.data.user}
+                captions={post.data.captions}
+                type={post.data.type}
+              />
+              //  : <VidPost key={post.id}
+              // url={post.data.url}
+              // id={post.id}
+              // numcomment={post.data.numcomment}
+              // comment={post.data.comment}
+              // user={post.data.user}
+              // captions={post.data.captions}></VidPost>
+          
+              );
+              
+            })}
           </div>
+          <div className="w-[320px] flex flex-col max-[1160px]:hidden">
+            <div className="w-full h-[56px] mb-2 flex justify-between items-center">
+              <div className="flex flex-row gap-3 items-center">
+                <img
+                  className="h-[56px] w-[56px] object-cover rounded-full"
+                  src="https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1"
+                  alt=""
+                />
+                <div className=" font-semibold text-sm">Yeee.hawww</div>
+              </div>
+              <div className="font-semibold text-xs text-sky-500">Switch</div>
+            </div>
+            <div className="w-full flex justify-between items-center mb-[10px]">
+              <div className="font-semibold text-sm text-gray-500">
+                Suggestions for you
+              </div>
+              <div className="text-xs font-semibold">See all</div>
+            </div>
+            <Suggestions />
+            <Suggestions />
+            <Suggestions />
+            <Suggestions />
+
+            <div className="mt-6 text-[12px] text-gray-300 w-full">
+              About &#8226; Help &#8226; Press &#8226; API &#8226; Jobs &#8226;
+              Privacy &#8226; Terms &#8226; Locations &#8226; Language &#8226;
+              Meta Verified
+            </div>
           </div>
         </div>
-        </>
+      </div>
+    </>
   );
 };
 
-function PicPost(){
-return(
-   <div className='flex flex-col w-full items-center mb-10'>
-                  <div className='w-[470px] max-[480px]:w-screen'>
-                    <div className='flex flex-row px-2 w-full gap-2 h-[58px] items-center justify-between'>
-                      <div className='flex flex-row items-center gap-2'>
-                      
-                            <img className="rounded-full object-cover  h-[32px] w-[32px]" src="src/public/drake.jpg" alt="" />
-                         
-                          <div>
-                          <div className='flex gap-2 items-center'>   <span className=' text-sm font-medium'>champagnepapi</span><span><img src="https://predis.ai/resources/wp-content/uploads/2021/07/compressed-tick.png" width="20px" alt="" /></span></div> <span className=' text-xs font-normal text-gray-500'> &#8226; 35 min ago </span>
-                          </div>
-                      </div>
-                      <div>
-                        <MoreHorizIcon/>
-                      </div>
-                    </div>
-                    <img src="src/public/moores.png" className='px-2 w-full' alt="" />
-                    <div className='flex flex-row w-full justify-between'>
-                      <div>
-                        <FavoriteBorderOutlinedIcon className='m-2 w-[42px] h-[42px]'/>
-                        <AddCommentOutlinedIcon className='m-2  w-[42px] h-[42px]' />
-                        <SendOutlinedIcon className='m-2  w-[42px] h-[42px]'/>
-                        </div>
-                        <div className='self-end'>
-                        <BookmarkBorderOutlinedIcon className='m-2  w-[42px] h-[42px] self-end'/>
-                        </div>
-                    </div>
-                    <div className='p-2 pb-0 text-sm'>
-                      Liked by <span className=' font-semibold'>Elon Musk</span> and <span  className=' font-semibold'>others</span>
-                    </div>
-                    <div className='p-2 pb-0 text-sm'>
-                      <span className=' font-semibold'>Memeacc </span> Them those ugly bitches
-                    </div>
-                    <div className='p-2 pb-0 text-sm text-gray-500'>
-                      more
-                    </div>
-                    <div className='p-2 pb-0 text-base text-gray-500'>
-                      View all 300 comments
-                    </div>
-                    <div className='p-2 pb-4 border-[var(--border)] border-b-[1px] border-solid text-base text-gray-500'>
-                      Add a comment..
-                    </div>
-                  </div>
-              </div>
-)
-}
+// function VidPost({ url, numcomment, id, comment, captions, user }){
 
-const Story = ({num , name = "raw"}) => {
-  return(
-    <div className=" flex flex-col">
-                  <div className="relative w-16 h-16">
-                    <img src="https://twibbon.blob.core.windows.net/twibbon/2017/349/bfce11cf-20e8-48b9-ab19-bb43247b89c8.png" className="w-16 h-16 absolute top-0" alt="" />
-                    <div className="rounded-full absolute  h-[56px] w-[56px] top-[4px] left-[4px]">
-                    <img src={"https://picsum.photos/300/200?random=" + num}  className="object-cover h-[56px] w-[56px] rounded-full" alt="" />
-                    </div>
-                  </div>
-                  <div className="w-16 h-4 overflow-hidden text-xs flex justify-center">
-                  {name}
-                  </div>
-                </div>
-  )
-}
+//   useEffect(()=>{},[])
+//   return(
+//   <>
+  
+//   </>)
+// }
 
-const Suggestions = () =>{
+function PicPost({ url, numcomment, id,type, comment, captions, user }) {
+  const [profilePic, setPropfilepic] = useState("");
+  const [isFav, setIsFav] = useState(false);
+  const [isSav, setIsSav] = useState(false);
+  const [commentVal, setCommentVal] = useState("")
+  const { setUserBasicInfo, userBasicInfo } = useContext(Context);
+  const [numberOfCom, setNumberOfCom] = useState(0)
+  const [showComment, setShowComment] = useState(false)
+  const [commentList, setCommentList] = useState(null)
+  useEffect(() => {
+    if (userBasicInfo.profileimg) {
+      setPropfilepic(userBasicInfo.profileimg);
+    }
+    setNumberOfCom(numcomment)
+    for (let i = 0; i < userBasicInfo.likes.length; i++) {
+      if (userBasicInfo.likes[i] == id) {
+        setIsFav(true);
+      }
+    }
+    for (let i = 0; i < userBasicInfo.saved.length; i++) {
+      if (userBasicInfo.saved[i] == id) {
+        setIsSav(true);
+      }
+    }
+  }, []);
+  async function favHandler() {
+    if (isFav) {
+      const likeArray = userBasicInfo.likes;
+      const updatedArray = likeArray.filter((arr) => arr !== id);
+      setUserBasicInfo({ ...userBasicInfo, likes: updatedArray });
+      const userRef = doc(db, "user", user);
+
+      await updateDoc(userRef, {
+        likes: updatedArray,
+      });
+      const postRef = doc(db, "post", id);
+
+      await updateDoc(postRef, {
+        numlikes: increment(-1)
+      },{merge : true});
+      setIsFav(false);
+    } else {
+      const likeArray = userBasicInfo.likes;
+      likeArray.push(id);
+      setUserBasicInfo({ ...userBasicInfo, likes: likeArray });
+      const userRef = doc(db, "user", user);
+
+      await updateDoc(userRef, {
+        likes: likeArray,
+      });
+      const postRef = doc(db, "post", id);
+
+      await updateDoc(postRef, {
+        numlikes: increment(1)
+      },{merge : true});
+      setIsFav(true);
+    }
+  }
+  async function savHandler() {
+    if (isSav) {
+      const savedArray = userBasicInfo.saved;
+      const updatedArray = savedArray.filter((arr) => arr !== id);
+      setUserBasicInfo({ ...userBasicInfo, saved: updatedArray });
+      const userRef = doc(db, "user", user);
+
+      await updateDoc(userRef, {
+        saved: updatedArray,
+      });
+      setIsSav(false);
+    } else {
+      const savedArray = userBasicInfo.saved;
+      savedArray.push(id);
+      setUserBasicInfo({ ...userBasicInfo, likes: savedArray });
+      const userRef = doc(db, "user", user);
+
+      await updateDoc(userRef, {
+        saved: savedArray,
+      });
+      setIsSav(true);
+    }
+  }
+  async function commentPostHandler(){
+    const postRef = doc(db, "post", id);
+
+      await updateDoc(postRef, {
+        comment: arrayUnion({user: user, data: commentVal}),
+        numcomment: increment(1)
+      },{merge : true});
+      handleCommentIncrement()
+      setCommentListHandler()
+      setCommentVal("")
+  }
+  const setCommentListHandler = () => {
+    let updatedCommentList = [...commentList, {user: user, data : commentVal}].reverse()
+    setCommentList(updatedCommentList);
+  };
+  
+  const handleCommentIncrement = () => {
+    setNumberOfCom(numberOfCom + 1)
+  }
+  const handleShowComment = async () => {
+    const docRef = doc(db, "post", id);
+    const docSnap = await getDoc(docRef);
+    const data = docSnap.data()
+
+    setCommentList(data.comment.reverse())
+
+    setShowComment(true);
+  };
+
+  const handleHideComment = () => {
+    setShowComment(false);
+  };
   return (
-    <div className='flex justify-between items-center w-full m-2 mx-0'>
-                <div className='flex items-center flex-row gap-2'>
-                  <img className='w-[32px] h-[32px] rounded-full object-cover' src="https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1" alt="" />
-                  <div className='flex flex-col justify-center'>
-                    <div className='text-[12px] font-semibold'>
-                      RobinHood
-                    </div>
-                    <div className='text-[12px] text-gray-500'>
-                        Followed by Drake
-                    </div>
-                  </div>
-                </div>
-                <div className='font-semibold text-xs text-sky-500'>
-                  Follow
-                </div>
-               </div>
+    <div className="flex flex-col w-full items-center mb-10">
+      <div className="w-[470px] max-[480px]:w-screen">
+        <div className="flex flex-row px-2 w-full gap-2 h-[58px] items-center justify-between">
+          <div className="flex flex-row items-center gap-2">
+            <img
+              className="rounded-full object-cover  h-[32px] w-[32px]"
+              src={profilePic ? profilePic : "src/public/profile.jpg"}
+              alt=""
+            />
+
+            <div>
+              <div className="flex gap-2 items-center">
+                {" "}
+                <span className=" text-sm font-medium">{user}</span>
+                <span>
+                  <img
+                    src="https://predis.ai/resources/wp-content/uploads/2021/07/compressed-tick.png"
+                    width="20px"
+                    alt=""
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <MoreHorizIcon />
+          </div>
+        </div>
+        {type === "image" ? 
+        <img src={url} className="px-2 w-full max-h-[90vh] object-cover" alt="" /> :
+      
+      <video className="w-full max-h-[90vh] px-2" controls >
+        <source src={url} type="video/mp4" />
+
+      </video>
+
+    }
+        <div className="flex flex-row w-full justify-between">
+          <div>
+            <span onClick={favHandler}>
+              {isFav ? (
+                <FavoriteIcon className="m-2 w-[42px] h-[42px] cursor-pointer text-red-500" />
+              ) : (
+                <FavoriteBorderOutlinedIcon className="m-2 w-[42px] h-[42px] cursor-pointer" />
+              )}
+            </span>
+            <SendOutlinedIcon className="m-2  w-[42px] h-[42px] cursor-pointer" />
+          </div>
+          <div onClick={savHandler} className="self-end">
+            {isSav ? <BookmarkIcon className="m-2  w-[42px] h-[42px] self-end cursor-pointer"/> : <BookmarkBorderOutlinedIcon className="m-2  w-[42px] h-[42px] self-end cursor-pointer" />}
+            
+          </div>
+        </div>
+
+        <div className="p-2 pb-0 text-sm mb-1">
+          <span className=" font-semibold">{user} </span> {captions}
+        </div>
+          {showComment ? <div className=" cursor-pointer relative p-2 pb-0 text-base text-gray-500 h-[120px] overflow-auto"><div className="flex flex-col gap-2">{commentList.map((comment, index) => (
+        <Comment key={index} user={comment.user} data={comment.data} />
+      ))}</div><div onClick={handleHideComment} className=" text-xs absolute bottom-0 bg-white dark:bg-black">Show less</div> </div> :  numberOfCom !== 0 && (
+          <div onClick={handleShowComment}  className=" cursor-pointer p-2 pb-0 text-base text-gray-500">
+            View {numberOfCom > 1 && "all"} {numberOfCom}{" "}
+            {numberOfCom > 1 ? "comment" : "comments"}
+          </div>
+        ) }
+       
+
+        <div className="p-2 pb-4 border-[var(--border)] border-b-[1px] border-solid text-base flex items-center">
+          <input type="text" value={commentVal} onChange={(event)=> setCommentVal(event.target.value)} placeholder="Add a comment" className=" placeholder:text-gray-500 outline-0 flex-grow" />
+          {commentVal && <><div onClick={commentPostHandler} className=" cursor-pointer text-blue-500 hover:text-blue-600 font-bold">Post</div></>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const Comment = ({user, data}) => {
+  const [profilePic, setPropfilepic] = useState("");
+  useEffect(()=>{
+    async function fetch(){
+      const docRef = doc(db, "user", user);
+      const docSnap = await getDoc(docRef);
+      const data = docSnap.data()
+      setPropfilepic(data.profileimg)
+    }
+    fetch()
+  },[])
+  return (
+    <>
+    <div className="flex gap-2">
+      <img className="rounded-full object-cover  h-[25px] w-[25px]" src={profilePic ? profilePic : "src/public/profile.jpg"} alt="" />
+      <div>
+          <span className=" font-semibold mr-2 text-black text-sm">{user}</span><span className=" text-xs">{data}</span>        
+      </div>
+    </div>
+    </>
   )
 }
+
+const Story = ({ num, name = "raw" }) => {
+  return (
+    <div className=" flex flex-col">
+      <div className="relative w-16 h-16">
+        <img
+          src="https://twibbon.blob.core.windows.net/twibbon/2017/349/bfce11cf-20e8-48b9-ab19-bb43247b89c8.png"
+          className="w-16 h-16 absolute top-0"
+          alt=""
+        />
+        <div className="rounded-full absolute  h-[56px] w-[56px] top-[4px] left-[4px]">
+          <img
+            src={num}
+            className="object-cover h-[56px] w-[56px] rounded-full"
+            alt=""
+          />
+        </div>
+      </div>
+      <div className="w-16 h-4 overflow-hidden text-xs flex justify-center">
+        {name}
+      </div>
+    </div>
+  );
+};
+
+const Suggestions = () => {
+  return (
+    <div className="flex justify-between items-center w-full m-2 mx-0">
+      <div className="flex items-center flex-row gap-2">
+        <img
+          className="w-[32px] h-[32px] rounded-full object-cover"
+          src="https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1"
+          alt=""
+        />
+        <div className="flex flex-col justify-center">
+          <div className="text-[12px] font-semibold">RobinHood</div>
+          <div className="text-[12px] text-gray-500">Followed by Drake</div>
+        </div>
+      </div>
+      <div className="font-semibold text-xs text-sky-500">Follow</div>
+    </div>
+  );
+};
 
 export default MainPage;

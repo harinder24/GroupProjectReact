@@ -411,3 +411,6 @@ img {
 #createMainDiv::-webkit-scrollbar { 
     display: none; 
 }
+.hideDaBar::-webkit-scrollbar { 
+    display: none; 
+}

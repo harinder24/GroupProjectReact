@@ -67,9 +67,11 @@ export default function Create() {
       const postData = {
         captions : textareaValue,
         comment : [],
-        type : mediaType,
-        url : mediaUrl,
+        type : localLink.type.includes("video") ? "video" : "image",
+        url : data.secure_url,
         numcomment: 0,
+        user: userBasicInfo.username,
+        numlikes: 0
       }
  
       const docRef = await addDoc(collection(db, "post"), postData);
