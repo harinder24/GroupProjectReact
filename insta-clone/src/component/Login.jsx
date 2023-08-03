@@ -80,7 +80,7 @@ const Login  = () => {
                 } else {
                   const userDoc = querySnapshot.docs[0];
                   const userData = userDoc.data();
-                  console.log(userData);
+        
                   setUserBasicInfo({email: userData.email, fullname: userData.fullname, username: userData.username})
                   navigate('/')
                 

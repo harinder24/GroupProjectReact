@@ -51,7 +51,43 @@ const MainPage = () => {
                 <Story name="Jidion" num={Math.floor(Math.random(87,1000) * 20)}/><Story name="kai" num={Math.floor(Math.random(67,1000) *56)}/><Story name="drako" num={Math.floor(Math.random(53,1000) * 88)}/><Story name="yeet" num={Math.floor(Math.random(17,1000) * 95)}/><Story name="pablo" num={Math.floor(Math.random(121,1000) * 78)}/><Story name="coco" num={Math.floor(Math.random(143,1000) * 51)}/><Story name="melon" num={Math.floor(Math.random(11,1000)  *65)}/><Story num={Math.floor(Math.random(55,1000) *88)}/><Story num={Math.floor(Math.random(8,1000) *99)}/><Story num={Math.floor(Math.random(4,1000)* 73)}/><Story num={Math.floor(Math.random(1,800)* 3)}/><Story num={Math.floor(Math.random(1,900) *6)}/><Story num={Math.floor(Math.random(1,100))}/>
 
               </div>
-              <div className='flex flex-col w-full items-center'>
+             
+          </div>
+          <PicPost/><PicPost/>
+          </div>
+          <div className='w-[320px] flex flex-col max-[1160px]:hidden'>
+               <div className='w-full h-[56px] mb-2 flex justify-between items-center'>
+                <div className='flex flex-row gap-3 items-center'>
+                    <img className='h-[56px] w-[56px] object-cover rounded-full' src="https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1" alt="" />
+                    <div className=' font-semibold text-sm'>Yeee.hawww</div>
+                </div>
+                <div className='font-semibold text-xs text-sky-500'>
+                  Switch
+                </div>
+               </div>
+               <div className='w-full flex justify-between items-center mb-[10px]'>
+                  <div className='font-semibold text-sm text-gray-500'>
+                      Suggestions for you
+                  </div>
+                  <div className='text-xs font-semibold'>
+                      See all
+                  </div>
+               </div>
+               <Suggestions/><Suggestions/><Suggestions/><Suggestions/>
+
+               <div className='mt-6 text-[12px] text-gray-300 w-full'>
+                About &#8226; Help &#8226; Press &#8226; API &#8226; Jobs &#8226; Privacy &#8226; Terms &#8226; Locations &#8226; Language &#8226; Meta Verified
+               </div>
+          </div>
+          </div>
+        </div>
+        </>
+  );
+};
+
+function PicPost(){
+return(
+   <div className='flex flex-col w-full items-center mb-10'>
                   <div className='w-[470px] max-[480px]:w-screen'>
                     <div className='flex flex-row px-2 w-full gap-2 h-[58px] items-center justify-between'>
                       <div className='flex flex-row items-center gap-2'>
@@ -94,38 +130,8 @@ const MainPage = () => {
                     </div>
                   </div>
               </div>
-          </div>
-          </div>
-          <div className='w-[320px] flex flex-col max-[1160px]:hidden'>
-               <div className='w-full h-[56px] mb-2 flex justify-between items-center'>
-                <div className='flex flex-row gap-3 items-center'>
-                    <img className='h-[56px] w-[56px] object-cover rounded-full' src="https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1" alt="" />
-                    <div className=' font-semibold text-sm'>Yeee.hawww</div>
-                </div>
-                <div className='font-semibold text-xs text-sky-500'>
-                  Switch
-                </div>
-               </div>
-               <div className='w-full flex justify-between items-center mb-[10px]'>
-                  <div className='font-semibold text-sm text-gray-500'>
-                      Suggestions for you
-                  </div>
-                  <div className='text-xs font-semibold'>
-                      See all
-                  </div>
-               </div>
-               <Suggestions/><Suggestions/><Suggestions/><Suggestions/>
-
-               <div className='mt-6 text-[12px] text-gray-300 w-full'>
-                About &#8226; Help &#8226; Press &#8226; API &#8226; Jobs &#8226; Privacy &#8226; Terms &#8226; Locations &#8226; Language &#8226; Meta Verified
-               </div>
-          </div>
-          </div>
-        </div>
-        </>
-  );
-};
-
+)
+}
 
 const Story = ({num , name = "raw"}) => {
   return(
