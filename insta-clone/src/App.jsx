@@ -10,6 +10,7 @@ import Explore from './component/Explore'
 import Login from './component/Login'
 import { useEffect, useState } from 'react'
 import { auth, db } from './config'
+import Create from './component/Create'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/explore' element={<Explore/>}/>
       <Route path='/profile' element={<Profile/>}/>
+      <Route path='/create' element={<Create/>}/>
     </Routes>
     
       </BrowserRouter>

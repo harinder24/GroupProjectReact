@@ -38,8 +38,8 @@ const NavBar = () => {
         <div className="pl-4 text-xs max-[1264px]:hidden ">Search</div>
       </div>
       </Link>
-      <Link to="/explore" className="p-3  flex items-center max-[770px]:hidden rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
-      <div >
+      <Link to="/explore" className="max-[770px]:hidden logoHoveNav">
+      <div className="p-3  flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 " >
         <ExploreOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden ">Expore</div>
       </div>
@@ -52,15 +52,17 @@ const NavBar = () => {
         <MessageOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Messages</div>
       </div>
+   
       <div className="p-3  flex items-center  max-[770px]:hidden rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <FavoriteBorderOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Notifications</div>
       </div>
+      <Link to="/create" className="max-[770px]:hidden ">
       <div className="p-3  flex items-center  max-[770px]:hidden  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <AddBoxOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Create</div>
       </div>
-     
+      </Link>
      <Link to="/profile">
       <div className="p-3  flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <img src="src/public/profile.jpg" alt="" className=" rounded-full" width="24px" />

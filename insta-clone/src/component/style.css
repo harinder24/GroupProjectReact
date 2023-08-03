@@ -408,5 +408,11 @@ img {
 #exploreMainContect::-webkit-scrollbar { 
     display: none; 
 }
+<<<<<<< Updated upstream
 
 
+=======
+#createMainDiv::-webkit-scrollbar { 
+    display: none; 
+}
+>>>>>>> Stashed changes
