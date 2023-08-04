@@ -214,6 +214,7 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
   const [numberOfCom, setNumberOfCom] = useState(0)
   const [showComment, setShowComment] = useState(false)
   const [commentList, setCommentList] = useState(null)
+  const [isFollowing, setIsFollowing] = useState(false)
   useEffect(() => {
     if (userBasicInfo.profileimg) {
       setPropfilepic(userBasicInfo.profileimg);
@@ -228,6 +229,17 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
       if (userBasicInfo.saved[i] == id) {
         setIsSav(true);
       }
+    }
+    if(userBasicInfo.following){
+      for (let i = 0; i < userBasicInfo.following.length; i++) {
+        if (userBasicInfo.following[i] == user) {
+          setIsFollowing(true);
+        }
+      }
+    }
+
+    if(userBasicInfo.username == user){
+      setIsFollowing(true)
     }
   }, []);
   async function favHandler() {
@@ -318,6 +330,28 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
   const handleHideComment = () => {
     setShowComment(false);
   };
+
+  async function followingHandler(){
+    const obj = userBasicInfo;
+    if(!obj.following){
+      obj.following = []
+    }
+      obj.following.push(user)
+      setUserBasicInfo({obj})
+      const postRef = doc(db, "user", userBasicInfo.username);
+
+      await updateDoc(postRef, {
+        following: arrayUnion(user),
+      },{merge : true});
+
+      const postRef2 = doc(db, "user", user);
+
+      await updateDoc(postRef2, {
+        followers: arrayUnion(userBasicInfo.username),
+      },{merge : true});
+
+      setIsFollowing(true)
+  }
   return (
     <div className="flex flex-col w-full items-center mb-10">
       <div className="w-[470px] max-[480px]:w-screen">
@@ -334,11 +368,7 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
                 {" "}
                 <span className=" text-sm font-medium">{user}</span>
                 <span>
-                  <img
-                    src="https://predis.ai/resources/wp-content/uploads/2021/07/compressed-tick.png"
-                    width="20px"
-                    alt=""
-                  />
+                 {isFollowing ? <></> : <button onClick={followingHandler} className=" px-2 py-1 bg-blue-500 text-xs font-bold text-white rounded-lg" >Follow</button> } 
                 </span>
               </div>
             </div>
@@ -387,7 +417,7 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
        
 
         <div className="p-2 pb-4 border-[var(--border)] border-b-[1px] border-solid text-base flex items-center">
-          <input type="text" value={commentVal} onChange={(event)=> setCommentVal(event.target.value)} placeholder="Add a comment" className=" placeholder:text-gray-500 outline-0 flex-grow" />
+          <input type="text" value={commentVal} onChange={(event)=> setCommentVal(event.target.value)} placeholder="Add a comment" className=" placeholder:text-gray-500 outline-0 flex-grow dark:bg-black " />
           {commentVal && <><div onClick={commentPostHandler} className=" cursor-pointer text-blue-500 hover:text-blue-600 font-bold">Post</div></>}
         </div>
       </div>
@@ -411,7 +441,7 @@ const Comment = ({user, data}) => {
     <div className="flex gap-2">
       <img className="rounded-full object-cover  h-[25px] w-[25px]" src={profilePic ? profilePic : "src/public/profile.jpg"} alt="" />
       <div>
-          <span className=" font-semibold mr-2 text-black text-sm">{user}</span><span className=" text-xs">{data}</span>        
+          <span className=" font-semibold mr-2 text-black dark:text-white text-sm">{user}</span><span className=" text-xs">{data}</span>        
       </div>
     </div>
     </>

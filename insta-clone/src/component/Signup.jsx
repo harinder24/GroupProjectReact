@@ -108,8 +108,8 @@ try {
               fullname: fullName,
               profileimg: "",
               likes: [],
-              following:{list:[], total: 0},
-              followers:{list:[], total: 0},
+              following:[],
+              followers:[],
               posts:[],
               saved:[]
           };

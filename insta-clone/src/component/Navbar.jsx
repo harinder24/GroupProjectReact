@@ -44,10 +44,12 @@ const NavBar = () => {
         <div className="pl-4 text-xs max-[1264px]:hidden ">Expore</div>
       </div>
       </Link>
+      <Link to="/reels">
       <div className="p-3  flex items-center rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <FeaturedVideoOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Reels</div>
       </div>
+      </Link>
       <div className="p-3  flex items-center rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <MessageOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Messages</div>

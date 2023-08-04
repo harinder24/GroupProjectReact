@@ -414,3 +414,9 @@ img {
 .hideDaBar::-webkit-scrollbar { 
     display: none; 
 }
+.bg-opacity{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.bg-opacity:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+}
