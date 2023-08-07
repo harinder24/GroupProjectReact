@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword , signInWithPopup } from "fireb
 
 import Context from '../context';
 import { db, fb, auth } from '../config';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Signup = () => {
@@ -106,12 +106,13 @@ try {
               email: email,
               username: username,
               fullname: fullName,
-              profileimg: "",
+              profileimg: "src/public/profile.jpg",
               likes: [],
               following:[],
               followers:[],
               posts:[],
-              saved:[]
+              saved:[],
+              notification:[]
           };
           await setDoc(doc(db, "user", username), docData);
             setUserBasicInfo(docData)
@@ -250,9 +251,9 @@ try {
             <span>
               <p className=" text-black m-[20px] text-[14px] text-center">
                  Have an account?{" "}
-                <a className=" text-sky-500" href="">
+                <Link className=" text-sky-500" to="/login">
                   Log in
-                </a>
+                </Link>
               </p>
             </span>
           </div>

@@ -9,7 +9,8 @@ import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useContext, useEffect, useState } from "react";
 import Context from "../context";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import {
   arrayUnion,
   collection,
@@ -17,13 +18,18 @@ import {
   getDoc,
   getDocs,
   increment,
+  limit,
+  query,
   updateDoc,
+  where,
 } from "firebase/firestore";
 import { db } from "../config";
 
 const MainPage = () => {
-  const { userBasicInfo } = useContext(Context);
+  const { userBasicInfo,setUserBasicInfo ,followingSuggestion, SetFollowingSuggestion } = useContext(Context);
   const [randomPost, setRandomPost] = useState([]);
+  const [followingSuggestionSplice, setFollowingSuggestionSplice] = useState({})
+  
   const navigate = useNavigate();
   useEffect(() => {
     const fetchRandomDocuments = async () => {
@@ -35,11 +41,36 @@ const MainPage = () => {
       }
     };
     fetchRandomDocuments();
+    fetchDocumentsNotInArray("user", 4).then((documents) => {
+    
+      for(let i = 0; i < documents.length; i++){
+          if(!documents[i].profileimg){
+            documents[i].profileimg = "src/public/profile.img"
+          }
+      }
+      SetFollowingSuggestion(documents)
+    });
+    
+  
   }, []);
 
-  useEffect(() => {
-    console.log(randomPost);
-  }, [randomPost]);
+  const fetchDocumentsNotInArray = async (collectionName , limitCount) => {
+  
+    const arr = userBasicInfo.following
+    if(!arr.includes(userBasicInfo.username)){
+    arr.push(userBasicInfo.username)}
+
+    const collectionRef = collection(db, collectionName);
+  const querySnapshot = await getDocs(collectionRef);
+
+  const documents = querySnapshot.docs
+    .filter((doc) => !arr.includes(doc.id))
+    .slice(0, limitCount)
+    .map((doc) => ({ id: doc.id, ...doc.data() }));
+    return documents
+  };
+
+ 
 
   const getRandomDocuments = async (collectionName, numDocuments) => {
     const collectionRef = collection(db, collectionName);
@@ -69,9 +100,16 @@ const MainPage = () => {
 
     return randomDocuments;
   };
-
+if(!followingSuggestionSplice){
+  return <div></div>
+}
   if (!randomPost) {
     return <div></div>;
+  }
+  function switchAccHandler(){
+  setUserBasicInfo({})
+  navigate('/login')
+  
   }
   return (
     <>
@@ -91,9 +129,14 @@ const MainPage = () => {
                 className=" h-[29px] w-[103px] object-cover object-navinstalogo dark:object-navinstalogodark "
                 alt=""
               />
-              <div className="flex gap-2">
-                <AddBoxOutlinedIcon className=" cursor-pointer" />
-                <FavoriteBorderOutlinedIcon className=" cursor-pointer" />
+              <div className="flex gap-2 items-center">
+                
+             <Link to="/create">
+                <AddBoxOutlinedIcon className=" cursor-pointer logoHoveNav" />
+                </Link>
+                <Link to="/notification">
+                <FavoriteBorderOutlinedIcon className=" cursor-pointer logoHoveNav" />
+                </Link>
               </div>
             </div>
 
@@ -166,23 +209,24 @@ const MainPage = () => {
               <div className="flex flex-row gap-3 items-center">
                 <img
                   className="h-[56px] w-[56px] object-cover rounded-full"
-                  src="https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1"
+                  src={userBasicInfo.profileimg}
                   alt=""
                 />
-                <div className=" font-semibold text-sm">Yeee.hawww</div>
+                <div className=" font-semibold text-sm">{userBasicInfo.username}</div>
               </div>
-              <div className="font-semibold text-xs text-sky-500">Switch</div>
+              <div onClick={switchAccHandler} className="font-semibold text-xs text-sky-500 cursor-pointer">Switch</div>
             </div>
             <div className="w-full flex justify-between items-center mb-[10px]">
               <div className="font-semibold text-sm text-gray-500">
                 Suggestions for you
               </div>
-              <div className="text-xs font-semibold">See all</div>
+             
             </div>
-            <Suggestions />
-            <Suggestions />
-            <Suggestions />
-            <Suggestions />
+            {}
+            {followingSuggestion.map((item) => (
+    <Suggestions key={item.id} id={item.id} />
+  ))}
+            
 
             <div className="mt-6 text-[12px] text-gray-300 w-full">
               About &#8226; Help &#8226; Press &#8226; API &#8226; Jobs &#8226;
@@ -211,10 +255,11 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
   const [isSav, setIsSav] = useState(false);
   const [commentVal, setCommentVal] = useState("")
   const { setUserBasicInfo, userBasicInfo } = useContext(Context);
+  const [isFollowing, setIsFollowing] = useState(false)
   const [numberOfCom, setNumberOfCom] = useState(0)
   const [showComment, setShowComment] = useState(false)
   const [commentList, setCommentList] = useState(null)
-  const [isFollowing, setIsFollowing] = useState(false)
+  
   useEffect(() => {
     if (userBasicInfo.profileimg) {
       setPropfilepic(userBasicInfo.profileimg);
@@ -302,7 +347,7 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
     const postRef = doc(db, "post", id);
 
       await updateDoc(postRef, {
-        comment: arrayUnion({user: user, data: commentVal}),
+        comment: arrayUnion({user: userBasicInfo.username, data: commentVal}),
         numcomment: increment(1)
       },{merge : true});
       handleCommentIncrement()
@@ -310,7 +355,7 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
       setCommentVal("")
   }
   const setCommentListHandler = () => {
-    let updatedCommentList = [...commentList, {user: user, data : commentVal}].reverse()
+    let updatedCommentList = [...commentList, {user: userBasicInfo.username, data : commentVal}].reverse()
     setCommentList(updatedCommentList);
   };
   
@@ -368,7 +413,7 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
                 {" "}
                 <span className=" text-sm font-medium">{user}</span>
                 <span>
-                 {isFollowing ? <></> : <button onClick={followingHandler} className=" px-2 py-1 bg-blue-500 text-xs font-bold text-white rounded-lg" >Follow</button> } 
+                 {isFollowing ? <></> : <div onClick={followingHandler} className="font-semibold text-xs text-sky-500 cursor-pointer">Follow</div> } 
                 </span>
               </div>
             </div>
@@ -408,7 +453,7 @@ function PicPost({ url, numcomment, id,type, comment, captions, user }) {
         </div>
           {showComment ? <div className=" cursor-pointer relative p-2 pb-0 text-base text-gray-500 h-[120px] overflow-auto"><div className="flex flex-col gap-2">{commentList.map((comment, index) => (
         <Comment key={index} user={comment.user} data={comment.data} />
-      ))}</div><div onClick={handleHideComment} className=" text-xs absolute bottom-0 bg-white dark:bg-black">Show less</div> </div> :  numberOfCom !== 0 && (
+      ))}</div><div onClick={handleHideComment} className=" text-xs sticky bottom-[-1px] bg-white dark:bg-black">Show less</div> </div> :  numberOfCom !== 0 && (
           <div onClick={handleShowComment}  className=" cursor-pointer p-2 pb-0 text-base text-gray-500">
             View {numberOfCom > 1 && "all"} {numberOfCom}{" "}
             {numberOfCom > 1 ? "comment" : "comments"}
@@ -432,6 +477,7 @@ const Comment = ({user, data}) => {
       const docRef = doc(db, "user", user);
       const docSnap = await getDoc(docRef);
       const data = docSnap.data()
+      console.log(data.profileimg);
       setPropfilepic(data.profileimg)
     }
     fetch()
@@ -472,22 +518,46 @@ const Story = ({ num, name = "raw" }) => {
   );
 };
 
-const Suggestions = () => {
+const Suggestions = ({id, profileimg = "src/public/profile.jpg"}) => {
+  const { setUserBasicInfo, userBasicInfo } = useContext(Context);
+  const [isFollowing, setIsFollowing] = useState(false)
+  async function followingHandler(){
+    const obj = userBasicInfo;
+    if(!obj.following){
+      obj.following = []
+    }
+      obj.following.push(id)
+      setUserBasicInfo(obj)
+      const postRef = doc(db, "user", userBasicInfo.username);
+
+      await updateDoc(postRef, {
+        following: arrayUnion(id),
+      },{merge : true});
+
+      const postRef2 = doc(db, "user", id);
+
+      await updateDoc(postRef2, {
+        followers: arrayUnion(userBasicInfo.username),
+      },{merge : true});
+
+      setIsFollowing(true)
+  }
   return (
     <div className="flex justify-between items-center w-full m-2 mx-0">
       <div className="flex items-center flex-row gap-2">
         <img
           className="w-[32px] h-[32px] rounded-full object-cover"
-          src="https://th.bing.com/th/id/OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd?pid=ImgDet&rs=1"
+          src={profileimg}
           alt=""
         />
         <div className="flex flex-col justify-center">
-          <div className="text-[12px] font-semibold">RobinHood</div>
-          <div className="text-[12px] text-gray-500">Followed by Drake</div>
+          <div className="text-[12px] font-semibold">{id}</div>
         </div>
       </div>
-      <div className="font-semibold text-xs text-sky-500">Follow</div>
-    </div>
+      {isFollowing ? <></> :
+      <div onClick={followingHandler} className="font-semibold text-xs text-sky-500 cursor-pointer">Follow</div>
+  }
+  </div>
   );
 };
 

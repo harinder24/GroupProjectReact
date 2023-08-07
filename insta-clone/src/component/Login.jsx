@@ -80,7 +80,7 @@ const Login  = () => {
                 } else {
                   const userDoc = querySnapshot.docs[0];
                   const userData = userDoc.data();
-        
+                  
                   setUserBasicInfo(userData)
                   navigate('/')
                 
@@ -94,7 +94,7 @@ const Login  = () => {
   async function fbHandler(event){
     event.preventDefault();
     signInWithPopup(auth,fb).then((result)=>{
-      console.log(result.user);
+    
     })
   }
   const footerdata = [
