@@ -112,10 +112,10 @@ function arrowDownHandler() {
     </div>
     <div className="absolute top-0 right-0 h-screen mr-3" >
       <div className="flex h-screen flex-col justify-between">
-          <div onClick={arrowUpHandler} className="p-3 rounded-full bg-neutral-200 mt-[50px] hover:bg-neutral-300 cursor-pointer">
+          <div onClick={arrowUpHandler} className=" z-50 p-3 rounded-full bg-neutral-200 mt-[50px] hover:bg-neutral-300 cursor-pointer">
           <ArrowUpwardIcon className=""/>
           </div>
-          <div onClick={arrowDownHandler} className="p-3 rounded-full bg-neutral-200 mb-[50px] max-[770px]:mb-[100px] hover:bg-neutral-300 cursor-pointer">
+          <div onClick={arrowDownHandler} className="z-50 p-3 rounded-full bg-neutral-200 mb-[50px] max-[770px]:mb-[100px] hover:bg-neutral-300 cursor-pointer">
           <ArrowDownwardIcon className=""/>
           </div>
       </div>
@@ -237,6 +237,7 @@ function Reel({ url, numcomment, id, comment, captions, user }) {
       },
       { merge: true }
     );
+    console.log(commentVal);
     handleCommentIncrement();
     setCommentListHandler();
     setCommentVal("");
@@ -261,7 +262,7 @@ function Reel({ url, numcomment, id, comment, captions, user }) {
       const docSnap = await getDoc(docRef);
       const data = docSnap.data();
 
-console.log(id, "id");
+
       setCommentList(data.comment.reverse());
    
       setShowComment(true);
@@ -359,12 +360,9 @@ console.log(id, "id");
               {isFollowing ? (
                 <></>
               ) : (
-                <button
+                <div
                   onClick={followingHandler}
-                  className=" px-2 py-1 bg-blue-500 text-xs font-bold text-white rounded-lg"
-                >
-                  Follow
-                </button>
+                   className="font-semibold text-xs text-sky-500 cursor-pointer">Follow</div>
               )}
             </span>
             </div>
@@ -381,12 +379,10 @@ console.log(id, "id");
               ))}
             </div>
             <div className="sticky bottom-0">
-            <div className="text-base flex items-center">
+            <div className="text-base flex items-center pb-2">
               <input
                 type="text"
-                value={commentVal}
-                onChange={(event) => setCommentVal(event.target.value)}
-                placeholder="Add a comment"
+                value={commentVal} onChange={(event)=> setCommentVal(event.target.value)} placeholder="Add a comment"
                 className=" placeholder:text-gray-500 outline-0 flex-grow bg-black "
               />
               {commentVal && (

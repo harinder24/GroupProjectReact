@@ -115,14 +115,14 @@ export default function Create() {
     const file = event.dataTransfer.files[0];
     setLocalLink(file)
     setStage(false)
-    // handleUpload(file);
+  
   };
 
   const handleFileInput = (event) => {
     const file = event.target.files[0];
     setLocalLink(file)
     setStage(false)
-    // handleUpload(file);
+  
   };
 
   const handleDragOver = (event) => {
@@ -136,7 +136,7 @@ export default function Create() {
         id="createMainDiv"
         className="h-screen flex-grow overflow-auto flex justify-center items-center"
       >
-        <div className=" my-5 w-[505px] mx-2 h-[565px] max-[770px]:h-[300px] dark:bg-neutral-800 rounded-lg flex flex-col bg-white">
+        <div className=" my-5 w-[505px] mx-2 h-[565px] max-[770px]:h-[calc(100vh-90px)] dark:bg-neutral-800 rounded-lg flex flex-col bg-white">
           <div className="py-2 flex justify-center border-b-[1px] border-[var(--border)]">
             Create new post
           </div>

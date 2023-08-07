@@ -12,10 +12,14 @@ import { useEffect, useState } from 'react'
 import { auth, db } from './config'
 import Create from './component/Create'
 import Reels from './component/Reels'
+import Search from './component/Search'
+import Notification from './component/Notification'
+
 
 function App() {
 
   const [userBasicInfo, setUserBasicInfo] = useState({username: null, email: null, fullname: null})
+  const [followingSuggestion, SetFollowingSuggestion] = useState([])
   useEffect(()=>{
       const x = db
       const a = auth
@@ -23,7 +27,7 @@ function App() {
   },[])
   return (
 
-    <Context.Provider value={{userBasicInfo, setUserBasicInfo}}>
+    <Context.Provider value={{userBasicInfo, setUserBasicInfo, followingSuggestion, SetFollowingSuggestion}}>
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<MainPage/>}/>
@@ -33,6 +37,8 @@ function App() {
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/create' element={<Create/>}/>
       <Route path='/reels' element={<Reels/>}/>
+      <Route path='/search' element={<Search/>}/>
+      <Route path='/notification' element={<Notification/>}/>
     </Routes>
     
       </BrowserRouter>

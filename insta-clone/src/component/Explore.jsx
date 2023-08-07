@@ -1,115 +1,126 @@
-import NavBar from './Navbar';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { useContext, useEffect, useState } from "react";
+import NavBar from "./Navbar";
+import Context from "../context";
+import { useNavigate } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../config";
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import './explore.css'
-import FavoriteIcon from '@mui/icons-material/Favorite';
-
 const Explore = () => {
-    const exploreImgs =[
-        {
-            image: "src/public/eximg/cars.jpg",
-            
-        },
-        {
-            image: "src/public/eximg/meme.png",
-            
-        },
-        {
-            image: "https://images.unsplash.com/photo-1525351326368-efbb5cb6814d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
-            
-        },
-        {
-            image: "https://plus.unsplash.com/premium_photo-1677087121676-2acaaae5b3c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
-            
-        },
-        {
-            image: "src/public/eximg/shoes.png",
-            
-        },
-        {
-            image: "https://images.unsplash.com/photo-1617191519105-d07b98b10de6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
-           
-        },
-        {
-            image: "https://images.unsplash.com/photo-1579158951805-53f80485ed44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
-        },
-        {
-            image: "https://images.unsplash.com/photo-1644421439741-712c7fde7e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=891&q=80",
-        },
-        {
-            image: "src/public/eximg/twt2.png",
-        },
-        {
-            image: "https://images.unsplash.com/photo-1597589022928-bb4002c099ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
-        },
-        {
-            image: "https://images.unsplash.com/photo-1615485737651-580c9159c89a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=881&q=80",
-        },
-        {
-            image: "https://plus.unsplash.com/premium_photo-1661583774985-f952ba8b7a71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
-        }
-    ]
+  const { userBasicInfo } = useContext(Context);
+  const [randomPost, setRandomPost] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchRandomDocuments = async () => {
+      if (userBasicInfo.email == null) {
+        navigate("/login");
+      } else {
+        const random = await getRandomDocuments("post", 30);
+        setRandomPost(random);
+      }
+    };
+    fetchRandomDocuments();
+  }, []);
 
-    return(
-        <div className="flex dark:bg-black">
-        <NavBar/>
+  const getRandomDocuments = async (collectionName, numDocuments) => {
+    const collectionRef = collection(db, collectionName);
 
-        <div id='exploreMainContect' className=" container px-2 flex flex-col mx-auto h-screen overflow-auto">
+    // Step 1: Get the total count of documents in the collection
+    const querySnapshot = await getDocs(collectionRef);
+    const totalDocuments = querySnapshot.size;
 
-            {/* Search Bar */}
-            <div className="flex flex-row h-8 items-center m-5 bg-gray-200 box-border rounded-[8px] px-2 ">
-                <SearchOutlinedIcon className=" text-gray-500" />
-                
-                <input type="text"
-                    className=" bg-inherit text-gray-500 placeholder:text-gray-500 outline-0 "
-                    placeholder="Search"
-                />
-            </div>
+    // Step 2: Generate random indexes and fetch documents based on those indexes
+    const randomIndexes = [];
+    while (
+      randomIndexes.length < numDocuments &&
+      randomIndexes.length < totalDocuments
+    ) {
+      const randomIndex = Math.floor(Math.random() * totalDocuments);
+      if (!randomIndexes.includes(randomIndex)) {
+        randomIndexes.push(randomIndex);
+      }
+    }
+    
 
-            {/* Hashtag Box */}
-            <div className="container relative flex flex-wrap px-8 space-x-4 ">
-                <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">outfit inspo </button>
-                <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">interior design</button>  
-                <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">kitty cat</button>
-                <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">outfit inspiration</button>
-                <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">inspirational quotes</button>
-                <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">fashion inspo</button>
-                <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">outfit ideas</button>
-                <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">rock climbing</button>
-            </div>
-            
+    // Fetch the documents using the random indexes
+    const randomDocuments = [];
+    for (const index of randomIndexes) {
+      const snapshot = querySnapshot.docs[index];
+      randomDocuments.push({ id: snapshot.id, data: snapshot.data() });
+    }
 
-            {/* PICTUREEESSSSSSSSSSSSS */}
+    return randomDocuments;
+  };
 
-            <div className='conatiner grid grid-cols-3 gap-2'>
-                {
-                    exploreImgs.map((photo, index) =>{
-                        return(
-                            <div className='pics relative'>
-                            <img
-                                src={photo.image}
-                                key={index}
-                                alt={photo.text}
-                                className='w-full h-full object-cover z-10'
-                            />
-                            
-                            <div  id='pichover' className='w-full h-full absolute top-0 z-20'>
-                            <div class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
-                                <FavoriteIcon/>
-                                
-                                </div>
-                            </div>
-                            </div>
-                            
-                            
-                            
-                        );
-                    })
-                }
-            </div>
-        
+  if (!randomPost) {
+    return <div></div>;
+  }
+
+  return (
+    <div className="flex dark:bg-black">
+      <NavBar />
+
+      <div
+        id="exploreMainContect"
+        className=" pt-8 container px-2 flex flex-col mx-auto h-screen overflow-auto hideDaBar2"
+      >
+        <div className="container grid grid-cols-3 gap-2">
+          {randomPost.map((photo, index) => {
+            return (
+              <div
+                className=" cursor-pointer pics relative"
+                style={{ paddingBottom: "100%" }}
+              >
+                {photo.data.type == "video" ? (
+                  <>
+                    <video
+                      src={photo.data.url}
+                      key={index}
+                      className="w-full h-full object-cover absolute top-0 left-0 "
+                    />
+                    <div className="absolute top-0 z-[1]  w-full h-full pichover">
+                        <div  className="flex justify-center w-full  h-full  items-center">
+<PlayCircleOutlineIcon style={{ fontSize: 40 }}  className="text-white "/></div>
+                    </div>
+                  </>
+                ) : (
+                    <>
+                  <img
+                    src={photo.data.url}
+                    key={index}
+                    className="w-full h-full object-cover absolute top-0 left-0 "
+                  />
+                  <div className="absolute top-0 z-[1]  w-full h-full pichover"></div></>
+                )}
+              </div>
+            );
+          })}
         </div>
-        </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default Explore;
+
+//     {/* Search Bar */}
+//     <div className="flex flex-row h-8 items-center m-5 bg-gray-200 box-border rounded-[8px] px-2 ">
+//     <SearchOutlinedIcon className=" text-gray-500" />
+
+//     <input type="text"
+//         className=" bg-inherit text-gray-500 placeholder:text-gray-500 outline-0 "
+//         placeholder="Search"
+//     />
+// </div>
+
+// {/* Hashtag Box */}
+// <div className="container relative flex flex-wrap px-8 space-x-4 ">
+//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">outfit inspo </button>
+//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">interior design</button>
+//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">kitty cat</button>
+//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">outfit inspiration</button>
+//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">inspirational quotes</button>
+//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">fashion inspo</button>
+//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">outfit ideas</button>
+//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">rock climbing</button>
+// </div>

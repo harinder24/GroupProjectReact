@@ -27,51 +27,54 @@ const NavBar = () => {
       </div>
       
 <Link to="/">
-      <div className="p-3  flex items-center  rounded-lg hover:min-[770px]:bg-gray-200 dark:hover:min-[770px]:bg-zinc-800 cursor-pointer logoHoveNav">
+      <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start  flex items-center  rounded-lg hover:min-[770px]:bg-gray-200 dark:hover:min-[770px]:bg-zinc-800 cursor-pointer logoHoveNav">
         <HomeOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Home</div>
       </div>
       </Link>
       <Link to="/explore">
-      <div className="p-3  flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+        <Link to="/search">
+      <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <SearchIcon className="w-[24px] h-[24px]" />
         <div className="pl-4 text-xs max-[1264px]:hidden ">Search</div>
       </div>
       </Link>
-      <Link to="/explore" className="max-[770px]:hidden logoHoveNav">
-      <div className="p-3  flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 " >
+      </Link>
+      <Link to="/explore" className=" logoHoveNav">
+      <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800  " >
         <ExploreOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden ">Expore</div>
       </div>
       </Link>
       <Link to="/reels">
-      <div className="p-3  flex items-center rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+      <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start flex items-center rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <FeaturedVideoOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Reels</div>
       </div>
       </Link>
-      <div className="p-3  flex items-center rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+      <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start flex items-center rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <MessageOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Messages</div>
       </div>
-   
-      <div className="p-3  flex items-center  max-[770px]:hidden rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+   <Link to="/notification" className="max-[770px]:hidden " >
+      <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start flex items-center  max-[770px]:hidden rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <FavoriteBorderOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Notifications</div>
       </div>
+      </Link>
       <Link to="/create" className="max-[770px]:hidden ">
-      <div className="p-3  flex items-center  max-[770px]:hidden  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+      <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start  flex items-center  max-[770px]:hidden  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <AddBoxOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Create</div>
       </div>
       </Link>
      <Link to="/profile">
-      <div className="p-3  flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+      <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <img src="src/public/profile.jpg" alt="" className=" rounded-full" width="24px" />
         <div className="pl-4 text-xs max-[1264px]:hidden ">Profile</div>
       </div>
       </Link>
-      <div className="p-3  flex items-center mt-auto rounded-lg max-[770px]:hidden hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+      <div className="px-[5px] py-3 min-[290px]:px-3 min-[770px]:justify-center min-[1264px]:justify-start flex items-center mt-auto rounded-lg max-[770px]:hidden hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <MenuOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">More</div>
       </div>
