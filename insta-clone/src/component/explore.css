@@ -1,0 +1,10 @@
+/* Jean CSS*/
+
+.pichover:hover{
+  
+    background-color: rgba(0,0,0,0.3);
+     
+ }
+ .hideDaBar2::-webkit-scrollbar { 
+    display: none; 
+ }
