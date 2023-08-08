@@ -145,7 +145,7 @@ const Login  = () => {
                         value={email}
                         onChange={(event)=> setEmail(event.target.value)}
                           placeholder="Email"
-                          className=" pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
+                          className=" caret-black   pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
                           type="text"
                         />
                       </label>
@@ -161,7 +161,7 @@ const Login  = () => {
                         onChange={(event)=> setPassword(event.target.value)}
                         value={password}
                           placeholder="Password"
-                          className=" pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
+                          className=" caret-black   pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
                           type="password"
                         />
                       </label>

@@ -67,7 +67,7 @@ const Explore = () => {
         <div className="container grid grid-cols-3 gap-2">
           {randomPost.map((photo, index) => {
             return (
-              <div
+              <div  onClick={()=> navigate("/post/" + photo.id)} 
                 className=" cursor-pointer pics relative"
                 style={{ paddingBottom: "100%" }}
               >
@@ -103,24 +103,3 @@ const Explore = () => {
 
 export default Explore;
 
-//     {/* Search Bar */}
-//     <div className="flex flex-row h-8 items-center m-5 bg-gray-200 box-border rounded-[8px] px-2 ">
-//     <SearchOutlinedIcon className=" text-gray-500" />
-
-//     <input type="text"
-//         className=" bg-inherit text-gray-500 placeholder:text-gray-500 outline-0 "
-//         placeholder="Search"
-//     />
-// </div>
-
-// {/* Hashtag Box */}
-// <div className="container relative flex flex-wrap px-8 space-x-4 ">
-//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">outfit inspo </button>
-//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">interior design</button>
-//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">kitty cat</button>
-//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">outfit inspiration</button>
-//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">inspirational quotes</button>
-//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">fashion inspo</button>
-//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">outfit ideas</button>
-//     <button className=" bg-gray-200 h-8 mb-2 flex rounded px-6 py-1 text-black hover:bg-gray-300">rock climbing</button>
-// </div>

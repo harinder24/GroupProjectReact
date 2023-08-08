@@ -176,7 +176,7 @@ export default function Create() {
             <div className="w-full">
                <div className="container mx-auto p-4">
       <textarea
-        className="w-full min-h-20 h-[150px] resize-y overflow-y-auto border rounded focus:outline-none focus:neutral-blue-500"
+        className="w-full min-h-20 h-[150px] resize-y overflow-y-auto border rounded focus:outline-none caret-black dark:caret-white focus:neutral-blue-500 dark:bg-neutral-700 border-neutral-800"
         value={textareaValue}
         onChange={handleChange}
         onInput={handleResize}

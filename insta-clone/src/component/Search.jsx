@@ -133,11 +133,11 @@ const searchString = search;
 
  <div className='flex-grow h-screen overflow-auto hideDaBar2' >
     <div className='flex flex-grow items-center justify-center'>
-     <div className="flex flex-grow flex-row h-8 items-center my-5 mx-2 max-w-[600px] bg-gray-200 box-border rounded-[8px] px-2 ">
-    <SearchOutlinedIcon className=" text-gray-500" />
+     <div className="flex flex-grow flex-row h-8 items-center my-5 mx-2 max-w-[600px] dark:bg-neutral-800 bg-gray-200 box-border rounded-[8px] px-2 ">
+    <SearchOutlinedIcon className=" text-gray-500 " />
 
     <input type="text"
-        className=" bg-inherit flex-grow dark:caret-black dark:text-black  placeholder:text-gray-500 outline-0 "
+        className=" bg-inherit flex-grow dark:caret-white   caret-black dark:text-white  placeholder:text-gray-500 outline-0 "
         placeholder="Search"
         value={search}
         onChange={(event)=>setSearch(event.target.value)}
@@ -184,7 +184,7 @@ const searchString = search;
 }
 function Post({id}){
   const [data, setData] = useState(false)
-
+const navigate  = useNavigate()
   useEffect(()=>{
    async function fetch(){
     const docRef = doc(db, "post", id);
@@ -201,7 +201,7 @@ setData(dataz)
   }
 return(
 <>
-<div
+<div  onClick={()=> navigate("/post/" + id)}
                 className=" cursor-pointer pics relative"
                 style={{ paddingBottom: "100%" }}
               >
@@ -232,6 +232,18 @@ return(
 const Suggestions = ({id, profileimg = "src/public/profile.jpg"}) => {
     const { setUserBasicInfo, userBasicInfo } = useContext(Context);
     const [isFollowing, setIsFollowing] = useState(false)
+    const [profilePic, setPropfilepic] = useState("");
+    const navigate = useNavigate()
+  useEffect(() => {
+    async function fetch() {
+      const docRef = doc(db, "user", id);
+      const docSnap = await getDoc(docRef);
+      const data = docSnap.data();
+      console.log(data.profileimg, id, data);
+      setPropfilepic(data.profileimg);
+    }
+    fetch();
+  }, []);
     async function followingHandler(){
       const obj = userBasicInfo;
       if(!obj.following){
@@ -258,10 +270,10 @@ const Suggestions = ({id, profileimg = "src/public/profile.jpg"}) => {
     }
     return (
       <div className="flex justify-between items-center w-full m-2 mx-0">
-        <div className="flex items-center flex-row gap-2">
+        <div  onClick={()=> navigate("/profiles/" + id)}  className="flex items-center flex-row gap-2 cursor-pointer">
           <img
             className="w-[32px] h-[32px] rounded-full object-cover"
-            src={profileimg}
+            src={profilePic}
             alt=""
           />
           <div className="flex flex-col justify-center">

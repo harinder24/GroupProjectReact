@@ -111,13 +111,13 @@ await updateDoc(documentRef, {
 
 
     await updateDoc(documentRef, {
-      profileimg: "src/public/profile.jpg"
+      profileimg: "/src/public/profile.jpg"
     });
           setLocalLink("");
       
           setStage(true);
-          setUserBasicInfo({...userData, profileimg: "src/public/profile.jpg"})
-          setUserData({...userData, profileimg: "src/public/profile.jpg"})
+          setUserBasicInfo({...userData, profileimg: "/src/public/profile.jpg"})
+          setUserData({...userData, profileimg: "/src/public/profile.jpg"})
           setIsEditing(false)
   }
   const handleDrop = (event) => {
@@ -167,7 +167,7 @@ if(type == "followers"){
   await updateDoc(userRef, {
     following: updatedArray,
   },{merge : true});
-  await updateDoc(userRef, {
+  await updateDoc(userRef2, {
     followers: arrayRemove(userBasicInfo.username),
   },{merge : true});
 }
@@ -218,7 +218,7 @@ if(type == "followers"){
                   >
                     Select from computer
                   </button>
-                  {userData.profileimg && userData.profileimg == "src/public/profile.jpg" ? <></> : 
+                  {userData.profileimg && userData.profileimg == "/src/public/profile.jpg" ? <></> : 
                <button onClick={removeProfilePic} className=" cursor-pointer p-2 bg-blue-500 rounded-xl hover:bg-blue-600 font-bold text-white">
                   Remove profile picture
                </button>}
@@ -250,7 +250,7 @@ if(type == "followers"){
                 src={
                   userData.profileimg
                     ? userData.profileimg
-                    : "src/public/profile.jpg"
+                    : "/src/public/profile.jpg"
                 }
                 alt=""
               />
@@ -270,10 +270,10 @@ if(type == "followers"){
               <div className="flex gap-4 pt-4  max-[370px]:hidden ">
                 <div>{userData.post ? userData.post.length : 0} post</div>{" "}
                 <div onClick={followersHandler} className=" cursor-pointer">
-                  {userData.post ? userData.followers.length : 0} followers
+                  {objOfFollow.followers ? objOfFollow.followers.length :0} followers
                 </div>{" "}
                 <div onClick={followingHandler} className="cursor-pointer">
-                  {userData.post ? userData.following.length : 0} following
+                  {objOfFollow.following ? objOfFollow.following.length : 0} following
                 </div>
               </div>
             </div>
@@ -283,11 +283,11 @@ if(type == "followers"){
               <div>{userData.post ? userData.post.length : 0} post</div>{" "}
             
               <div onClick={followersHandler} className=" cursor-pointer">
-                {userData.post ? userData.followers.length : 0} followers
+              {objOfFollow.followers ? objOfFollow.followers.length :0} followers
               </div>{" "}
           
               <div onClick={followingHandler} className="cursor-pointer">
-                {userData.post ? userData.following.length : 0} following
+              {objOfFollow.following ? objOfFollow.following.length : 0}  following
               </div>
             </div>{" "}
           </div>
@@ -313,14 +313,14 @@ if(type == "followers"){
           <div className=" px-10 max-[500px]:px-2 grid grid-cols-3 gap-2 ">
             {isPost &&
               userData.post &&
-              userData.post.map((item) => <Post id={item} />)}
+              userData.post.reverse().map((item) => <Post key={item} id={item} />)}
             {isSaved &&
               userData.saved &&
-              userData.saved.map((item) => <Post id={item} />)}
+              userData.saved.reverse().map((item) => <Post key={item} id={item} />)}
           </div>
         </div>
       </div>
-          <Followers/>
+        
           {isFollowers && <div className="absolute top-0 w-screen h-screen z-50 bgBlack-opacity">
         <div className="flex justify-center items-center ">
         <div className=" my-5 w-[505px] mx-2 h-[565px] max-[770px]:h-[calc(100vh-90px)] dark:bg-neutral-800 rounded-lg flex flex-col bg-white">
@@ -330,7 +330,9 @@ if(type == "followers"){
             <CloseOutlinedIcon/>
             </div>
           </div>
+          <div className="flex-grow flex flex-col overflow-auto hideDaBar">
           {objOfFollow.followers.map((list)=> <Followers id={list} key={list} unFollowingHandler={unFollowingHandler}/>)}
+          </div>
     </div>
     </div>
     </div>}
@@ -342,8 +344,11 @@ if(type == "followers"){
             <div onClick={CloseFollowersHandler} className=" cursor-pointer">
             <CloseOutlinedIcon/>
             </div>
+          
           </div>
+          <div className="flex-grow flex flex-col overflow-auto hideDaBar">
           {objOfFollow.following.map((list)=> <Following id={list} key={list} unFollowingHandler={unFollowingHandler}/>)}
+          </div>
     </div>
     </div>
     </div>}
@@ -352,7 +357,7 @@ if(type == "followers"){
 };
 function Following({id , unFollowingHandler}){
   const [userData, setUserdata] = useState({})
-
+const navigate = useNavigate()
   useEffect(()=>{
     async function fetchData(){
       const docRef = doc(db, "user", id);
@@ -370,13 +375,13 @@ function Following({id , unFollowingHandler}){
 
 <div className=" p-2 overflow-auto hideDaBar">
 <div className="flex justify-between items-center">
-  <div className="flex items-center gap-2">
+  <div  onClick={()=> navigate("/profiles/" + id)}   className="flex items-center gap-2 cursor-pointer">
   <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "src/public/profile.jpg"} alt="" />
   <div className=" text-sm">
     {id}
   </div>
   </div>
-  <button onClick={()=>unFollowingHandler(id, "following")} className="py-[6px] px-2 rounded-lg bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-600 hover:dark:bg-neutral-700">Remove</button>
+  <button onClick={()=>unFollowingHandler(id, "following")} className="py-[6px] px-2 rounded-lg bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-600 hover:dark:bg-neutral-700">Unfollow</button>
 </div>
 </div>
   )
@@ -403,7 +408,7 @@ function Followers({id , unFollowingHandler}){
 
 <div className=" p-2 overflow-auto hideDaBar">
 <div className="flex justify-between items-center">
-  <div className="flex items-center gap-2">
+  <div onClick={()=> navigate("/profiles/" + id)}  className="flex items-center cursor-pointer gap-2">
   <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "src/public/profile.jpg"}  alt="" />
   <div className=" text-sm">
     {id}
@@ -417,7 +422,7 @@ function Followers({id , unFollowingHandler}){
 
 function Post({ id }) {
   const [data, setData] = useState(false);
-
+const navigate = useNavigate()
   useEffect(() => {
     async function fetch() {
       const docRef = doc(db, "post", id);
@@ -435,6 +440,7 @@ function Post({ id }) {
   return (
     <>
       <div
+        onClick={()=> navigate("/post/" + id)}
         className=" cursor-pointer pics relative"
         style={{ paddingBottom: "100%" }}
       >

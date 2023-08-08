@@ -32,6 +32,7 @@ export default function Notification() {
 
 function NotificationMessage({id}){
     const [userData, setUserData] = useState(false)
+    const navigate = useNavigate()
     useEffect(()=>{
         async function fetchData(){
             const docRef = doc(db, "user", id);
@@ -41,8 +42,9 @@ function NotificationMessage({id}){
         }
         fetchData()
     },[])
+    
     return(
-        <div className="w-full flex gap-2 my-2 items-center">
+        <div  onClick={()=> navigate("/profiles/" + id)}  className="w-full cursor-pointer flex gap-2 my-2 items-center">
             <img className="w-7 max-h-7 rounded-full object-cover" src={userData.profileimg ? userData.profileimg : "src/public/profile.jpg"}  alt="" />
             <div><b>{id}</b> started following you</div>
         </div>

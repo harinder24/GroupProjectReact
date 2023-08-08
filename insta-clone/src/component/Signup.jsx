@@ -106,13 +106,14 @@ try {
               email: email,
               username: username,
               fullname: fullName,
-              profileimg: "src/public/profile.jpg",
+              profileimg: "/src/public/profile.jpg",
               likes: [],
               following:[],
               followers:[],
               posts:[],
               saved:[],
-              notification:[]
+              notification:[],
+              message:[]
           };
           await setDoc(doc(db, "user", username), docData);
             setUserBasicInfo(docData)
@@ -175,7 +176,7 @@ try {
                       >
                         <input
                           placeholder="Email"
-                          className=" pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
+                          className=" caret-black  pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
                           type="email"
                           value={email}
                             onChange={(event) => setEmail(event.target.value)}
@@ -191,7 +192,7 @@ try {
                       >
                         <input
                           placeholder="Full name"
-                          className=" pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
+                          className="caret-black pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
                           type="text"
                           value={fullName}
                           onChange={(event) => setFullName(event.target.value)}
@@ -207,7 +208,7 @@ try {
                       >
                         <input
                           placeholder="Username"
-                          className=" pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
+                          className="caret-black pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
                           type="text"
                           value={username}
                           onChange={(event) => setUsername(event.target.value)}
@@ -223,7 +224,7 @@ try {
                       >
                         <input
                           placeholder="Password"
-                          className=" pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
+                          className="caret-black pl-2 appearance-none bg-[#fafafa] w-[264px] flex-grow m-0 outline-none overflow-hidden pt-[9px] pr-[7px] text-[14px] pb-[8px] text-ellipsis font-medium max-[380px]:w-full"
                           type="password"
                           value={password}
                           onChange={(event) => setPassword(event.target.value)}

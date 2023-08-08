@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
@@ -11,14 +11,17 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 import "./style.css";
 import { Link } from "react-router-dom";
+import Context from "../context";
 
 
 const NavBar = () => {
+ const {userBasicInfo} = useContext(Context)
+  
   return (
     <nav className="px-3 pt-2 pb-5 bg-white flex flex-col  box-border gap-y-2 w-[244px] h-screen border-r-[1px] border-solid border-[var(--border)]  z-[5] max-[1264px]:w-[72.8px] max-[770px]:fixed max-[770px]:w-full max-[770px]:flex-row max-[770px]:bottom-0 max-[770px]:h-fit max-[770px]:p-0 max-[770px]:justify-evenly dark:bg-black navBartopborder">
       <div className="mt-2 px-3 pt-[25px] mb-[19px] box-border max-[770px]:hidden rounded-lg min-[770px]:max-[1264px]:p-3 hover:min-[770px]:max-[1264px]:bg-gray-200 hover:dark:min-[770px]:max-[1264px]:bg-zinc-800 cursor-pointer logoHoveNav">
         <img
-          src="src/public/instagramlogotext.png"
+          src="/src/public/instagramlogotext.png"
           className="h-[29px] w-[103px] object-cover object-navinstalogo max-[1264px]:hidden dark:object-navinstalogodark"
           alt=""
         />
@@ -52,10 +55,11 @@ const NavBar = () => {
         <div className="pl-4 text-xs max-[1264px]:hidden">Reels</div>
       </div>
       </Link>
+      <Link to="/message">
       <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start flex items-center rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <MessageOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">Messages</div>
-      </div>
+      </div></Link>
    <Link to="/notification" className="max-[770px]:hidden " >
       <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start flex items-center  max-[770px]:hidden rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
         <FavoriteBorderOutlinedIcon className="w-[24px] h-[24px]"/>
@@ -70,7 +74,7 @@ const NavBar = () => {
       </Link>
      <Link to="/profile">
       <div className="px-[5px] py-3 min-[290px]:px-3  min-[770px]:justify-center min-[1264px]:justify-start flex items-center  rounded-lg hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
-        <img src="src/public/profile.jpg" alt="" className=" rounded-full" width="24px" />
+        <img src={userBasicInfo.profileimg} alt="" className=" rounded-full w-6 h-6 object-cover"  />
         <div className="pl-4 text-xs max-[1264px]:hidden ">Profile</div>
       </div>
       </Link>
