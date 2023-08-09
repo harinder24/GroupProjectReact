@@ -40,8 +40,8 @@ const MainPage = () => {
   useEffect(() => {
     const fetchRandomDocuments = async () => {
       if (userBasicInfo.email == null) {
-        location.href("/login")
-        // navigate("/login");
+        // location.href("/login")
+        navigate("/login");
       } else {
         const random = await getRandomDocuments("post", 20);
         setRandomPost(random);
