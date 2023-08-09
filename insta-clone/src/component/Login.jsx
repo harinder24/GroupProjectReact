@@ -15,7 +15,7 @@ const Login  = () => {
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = ["https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot1.png?__d=www", "https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot2.png?__d=www", "https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot3.png?__d=www", "https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot4.png?__d=www"];
+  const images = ["https://res.cloudinary.com/dddggrofv/image/upload/v1691608484/image1_tz2zav.png", "https://res.cloudinary.com/dddggrofv/image/upload/v1691608484/image4_bec7pk.png","https://res.cloudinary.com/dddggrofv/image/upload/v1691608484/image3_kcgs0o.png", "https://res.cloudinary.com/dddggrofv/image/upload/v1691608484/image2_yf0nfj.png"];
   useEffect(()=>{
     if(userBasicInfo.email != null){
       navigate('/')
