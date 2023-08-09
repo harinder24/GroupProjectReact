@@ -7,9 +7,9 @@ import { db, fb, auth } from "../config";
 
 
 const Login  = () => {
- 
+
     const navigate = useNavigate()
-    const {userBasicInfo, setUserBasicInfo } = useContext(Context);
+    const {userBasicInfo, setUserBasicInfo,needRefresh, setNeedRefresh } = useContext(Context);
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("");
@@ -19,6 +19,10 @@ const Login  = () => {
   useEffect(()=>{
     if(userBasicInfo.email != null){
       navigate('/')
+    }
+    if(needRefresh){
+      setNeedRefresh(false)
+      window.location.reload();
     }
   },[])
   useEffect(() => {
