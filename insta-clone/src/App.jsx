@@ -24,7 +24,6 @@ function App() {
 
   const [userBasicInfo, setUserBasicInfo] = useState({username: null, email: null, fullname: null})
   const [followingSuggestion, SetFollowingSuggestion] = useState([])
-  const [needRefresh, setNeedRefresh] = useState(true)
   useEffect(()=>{
       const x = db
       const a = auth
@@ -32,7 +31,7 @@ function App() {
   },[])
   return (
 
-    <Context.Provider value={{userBasicInfo, setUserBasicInfo, followingSuggestion, SetFollowingSuggestion, needRefresh, setNeedRefresh}}>
+    <Context.Provider value={{userBasicInfo, setUserBasicInfo, followingSuggestion, SetFollowingSuggestion}}>
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<MainPage/>}/>
