@@ -40,7 +40,8 @@ const MainPage = () => {
   useEffect(() => {
     const fetchRandomDocuments = async () => {
       if (userBasicInfo.email == null) {
-        navigate("/login");
+        location.href("/login")
+        // navigate("/login");
       } else {
         const random = await getRandomDocuments("post", 20);
         setRandomPost(random);
@@ -50,7 +51,7 @@ const MainPage = () => {
     fetchDocumentsNotInArray("user", 4).then((documents) => {
       for (let i = 0; i < documents.length; i++) {
         if (!documents[i].profileimg) {
-          documents[i].profileimg = "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true";
+          documents[i].profileimg = "https://res.cloudinary.com/dddggrofv/image/upload/v1691608835/profile_lxq8sq.jpg";
         }
       }
       SetFollowingSuggestion(documents);
