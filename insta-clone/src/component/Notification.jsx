@@ -46,7 +46,7 @@ function NotificationMessage({id}){
     
     return(
         <div  onClick={()=> navigate("/profiles/" + id)}  className="w-full cursor-pointer flex gap-2 my-2 items-center">
-            <img className="w-7 max-h-7 rounded-full object-cover" src={userData.profileimg ? userData.profileimg : "src/public/profile.jpg"}  alt="" />
+            <img className="w-7 max-h-7 rounded-full object-cover" src={userData.profileimg ? userData.profileimg : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"}  alt="" />
             <div><b>{id}</b> started following you</div>
         </div>
     )

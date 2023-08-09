@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'phone': "url('./src/public/phone.png')",
-        'igtextlogo': "url('./src/public/instagramlogotext.png')",
+        'phone': "url('https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/phone.png?raw=true')",
+        'igtextlogo': "url('https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/instagramlogotext.png?raw=true')",
       },
       backgroundPosition: {
         'iglogologin': '0px -52px',

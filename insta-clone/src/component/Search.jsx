@@ -31,7 +31,7 @@ export default function Search() {
     
       for(let i = 0; i < documents.length; i++){
           if(!documents[i].profileimg){
-            documents[i].profileimg = "src/public/profile.img"
+            documents[i].profileimg = "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.jpg?raw=true"
           }
       }
       SetFollowingSuggestion(documents)
@@ -229,7 +229,7 @@ return(
               </div>
 </>)
 }
-const Suggestions = ({id, profileimg = "src/public/profile.jpg"}) => {
+const Suggestions = ({id, profileimg = "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"}) => {
     const { setUserBasicInfo, userBasicInfo } = useContext(Context);
     const [isFollowing, setIsFollowing] = useState(false)
     const [profilePic, setPropfilepic] = useState("");

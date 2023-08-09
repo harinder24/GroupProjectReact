@@ -111,13 +111,13 @@ await updateDoc(documentRef, {
 
 
     await updateDoc(documentRef, {
-      profileimg: "/src/public/profile.jpg"
+      profileimg: "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"
     });
           setLocalLink("");
       
           setStage(true);
-          setUserBasicInfo({...userData, profileimg: "/src/public/profile.jpg"})
-          setUserData({...userData, profileimg: "/src/public/profile.jpg"})
+          setUserBasicInfo({...userData, profileimg: "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"})
+          setUserData({...userData, profileimg: "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"})
           setIsEditing(false)
   }
   const handleDrop = (event) => {
@@ -220,7 +220,7 @@ if(type == "followers"){
                   >
                     Select from computer
                   </button>
-                  {userData.profileimg && userData.profileimg == "/src/public/profile.jpg" ? <></> : 
+                  {userData.profileimg && userData.profileimg == "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true" ? <></> : 
                <button onClick={removeProfilePic} className=" cursor-pointer p-2 bg-blue-500 rounded-xl hover:bg-blue-600 font-bold text-white">
                   Remove profile picture
                </button>}
@@ -252,7 +252,7 @@ if(type == "followers"){
                 src={
                   userData.profileimg
                     ? userData.profileimg
-                    : "/src/public/profile.jpg"
+                    : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"
                 }
                 alt=""
               />
@@ -378,7 +378,7 @@ const navigate = useNavigate()
 <div className=" p-2 overflow-auto hideDaBar">
 <div className="flex justify-between items-center">
   <div  onClick={()=> navigate("/profiles/" + id)}   className="flex items-center gap-2 cursor-pointer">
-  <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "src/public/profile.jpg"} alt="" />
+  <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"} alt="" />
   <div className=" text-sm">
     {id}
   </div>
@@ -411,7 +411,7 @@ function Followers({id , unFollowingHandler}){
 <div className=" p-2 overflow-auto hideDaBar">
 <div className="flex justify-between items-center">
   <div onClick={()=> navigate("/profiles/" + id)}  className="flex items-center cursor-pointer gap-2">
-  <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "src/public/profile.jpg"}  alt="" />
+  <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"}  alt="" />
   <div className=" text-sm">
     {id}
   </div>

@@ -50,7 +50,7 @@ const MainPage = () => {
     fetchDocumentsNotInArray("user", 4).then((documents) => {
       for (let i = 0; i < documents.length; i++) {
         if (!documents[i].profileimg) {
-          documents[i].profileimg = "src/public/profile.img";
+          documents[i].profileimg = "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true";
         }
       }
       SetFollowingSuggestion(documents);
@@ -125,7 +125,8 @@ const MainPage = () => {
           <div className="flex flex-col justify-start items-center">
             <div className="hidden h-[64px] max-[770px]:flex flex-row w-screen p-4 mb-5 secondaryNav items-center justify-between border-[var(--border)] border-b-[1px] border-solid ">
               <img
-                src="src/public/instagramlogotext.png"
+
+                src="https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/instagramlogotext.png?raw=true"
                 className=" h-[29px] w-[103px] object-cover object-navinstalogo dark:object-navinstalogodark "
                 alt=""
               />
@@ -491,7 +492,7 @@ function PicPost({ url, numcomment, id, type, comment, captions, user }) {
           <div className="flex flex-row items-center gap-2">
             <img onClick={()=> navigate("/profile/" + user)}
               className="rounded-full object-cover cursor-pointer  h-[32px] w-[32px]"
-              src={profilePic ? profilePic : "/src/public/profile.jpg"}
+              src={"https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.jpg?raw=true"}
               alt=""
             />
 
@@ -695,7 +696,7 @@ function Following({ id, url , postid }) {
             src={
               userData.profileimg
                 ? userData.profileimg
-                : "/src/public/profile.jpg"
+                :               "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"
             }
             alt=""
           />

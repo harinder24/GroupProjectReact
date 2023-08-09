@@ -413,7 +413,7 @@ function Reel({ url, numcomment, id, comment, captions, user,isPopOpenHandler })
             <img
               onClick={() => navigate("/profiles/" + user)}
               className="rounded-full object-cover  h-[32px] w-[32px] cursor-pointer"
-              src={profilePic ? profilePic : "/src/public/profile.jpg"}
+              src={profilePic ? profilePic : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.jpg?raw=true"}
               alt=""
             />
 
@@ -500,7 +500,7 @@ const Comment = ({ user, data }) => {
       <div className="flex gap-2">
         <img
           className="rounded-full object-cover  h-[25px] w-[25px]"
-          src={profilePic ? profilePic : "/src/public/profile.jpg"}
+          src={profilePic ? profilePic : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.jpg?raw=true"}
           alt=""
         />
         <div>
@@ -608,7 +608,7 @@ function Following({ id, url, postid }) {
             src={
               userData.profileimg
                 ? userData.profileimg
-                : "/src/public/profile.jpg"
+                : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.jpg?raw=true"
             }
             alt=""
           />

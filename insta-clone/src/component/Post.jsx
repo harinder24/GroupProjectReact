@@ -298,7 +298,7 @@ function PicPost({ url, numcomment, id, type, comment, captions, user }) {
             <div className="flex flex-row items-center gap-2">
               <img onClick={()=> navigate("/profile/" + user)}
                 className="rounded-full object-cover cursor-pointer  h-[32px] w-[32px]"
-                src={profilePic ? profilePic : "/src/public/profile.jpg"}
+                src={profilePic ? profilePic : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"}
                 alt=""
               />
   
@@ -501,7 +501,7 @@ function Following({ id, url , postid }) {
               src={
                 userData.profileimg
                   ? userData.profileimg
-                  : "/src/public/profile.jpg"
+                  : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"
               }
               alt=""
             />

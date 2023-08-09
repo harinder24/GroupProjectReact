@@ -263,7 +263,7 @@ const OtherProfile = () => {
             <div className="flex">
               <img
                 className="h-[150px] w-[150px] rounded-full object-cover max-[770px]:h-[75px] max-[770px]:w-[75px]"
-                src={               profilePic == "/src/public/profile.jpg" ? "/src/public/profile.jpg" : profilePic
+                src={               profilePic == "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true" ? "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true" : profilePic
                   
                 }
                 alt=""
@@ -409,7 +409,7 @@ function Following({ id }) {
             src={
               userData.profileimg
                 ? userData.profileimg
-                : "/src/public/profile.jpg"
+                : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"
             }
             alt=""
           />
