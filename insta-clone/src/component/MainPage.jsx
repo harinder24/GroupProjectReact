@@ -142,7 +142,7 @@ const MainPage = () => {
             </div>
 
             <div className="w-[630px] flex flex-col max-[640px]:w-screen">
-              <div
+              {/* <div
                 id="InstaStories"
                 className=" w-full flex flex-row gap-4 overflow-auto pb-4 "
               >
@@ -177,7 +177,7 @@ const MainPage = () => {
                 <Story num="https://images.unsplash.com/photo-1690491979107-79f75df408ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI5fDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" />
                 <Story num="https://images.unsplash.com/photo-1690491979107-79f75df408ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI5fDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" />
                 <Story num="https://images.unsplash.com/photo-1690491979107-79f75df408ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI5fDZzTVZqVExTa2VRfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60" />
-              </div>
+              </div> */}
             </div>
             {randomPost.map((post) => {
               return (
