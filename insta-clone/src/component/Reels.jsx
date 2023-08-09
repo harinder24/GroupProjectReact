@@ -364,7 +364,7 @@ function Reel({ url, numcomment, id, comment, captions, user,isPopOpenHandler })
     <>
     
       <div className=" w-[372px]  h-[90vh] mb-10 relative flex justify-center items-center bg-black">
-        <video className="w-full max-h-[90vh] px-2 relative" controls autoPlay>
+        <video className="w-full max-h-[90vh] px-2 relative outline-0" controls autoPlay>
           <source src={url} type="video/mp4" />
           <div className="z-10 absolute top-0">hi</div>
         </video>

@@ -4,6 +4,7 @@ import Context from "../context";
 import { useNavigate } from "react-router-dom";
 import { db } from "../config";
 import "./style.css"
+import { doc, getDoc } from "firebase/firestore";
 export default function Notification() {
     const { userBasicInfo} = useContext(Context);
     const navigate = useNavigate()

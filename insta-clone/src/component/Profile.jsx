@@ -148,6 +148,7 @@ if(type == "followers"){
   const savedArray = objOfFollow.followers;
   const updatedArray = savedArray.filter((arr) => arr !== id);
   setObjOfFollow({ ...objOfFollow, followers: updatedArray });
+  setUserBasicInfo({...userBasicInfo, followers: updatedArray})
   const userRef = doc(db, "user", userData.username);
   const userRef2 = doc(db, "user", id);
   await updateDoc(userRef, {
@@ -162,6 +163,7 @@ if(type == "followers"){
   const savedArray = objOfFollow.following;
   const updatedArray = savedArray.filter((arr) => arr !== id);
   setObjOfFollow({ ...objOfFollow, following: updatedArray });
+  setUserBasicInfo({...userBasicInfo, following: updatedArray})
   const userRef = doc(db, "user", userData.username);
   const userRef2 = doc(db, "user", id);
   await updateDoc(userRef, {
@@ -388,7 +390,7 @@ const navigate = useNavigate()
 }
 function Followers({id , unFollowingHandler}){
   const [userData, setUserdata] = useState({})
-
+  const navigate = useNavigate()
   useEffect(()=>{
     async function fetchData(){
       const docRef = doc(db, "user", id);

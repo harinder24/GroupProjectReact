@@ -30,6 +30,7 @@ const OtherProfile = () => {
     }
 
     async function fetchData() {
+      
       const docRef = doc(db, "user", id);
       const docSnap = await getDoc(docRef);
       const docData = docSnap.data();
@@ -152,8 +153,10 @@ const OtherProfile = () => {
         const updatedArray = savedArray.filter((arr) => arr !== id);
         const userRef = doc(db, "user", userBasicInfo.username);
         const userRef2 = doc(db, "user", userData.username);
-        setUserBasicInfo({...userBasicInfo, following: updatedArray})
+        const updatedArray2 = userBasicInfo.following.filter((arr) => arr !== id);
+        setUserBasicInfo({...userBasicInfo, following: updatedArray2})
         setObjOfFollow({ ...objOfFollow, followers: updatedArray });
+        console.log({ ...objOfFollow, followers: updatedArray });
         await updateDoc(
           userRef,
           {
@@ -203,6 +206,52 @@ const OtherProfile = () => {
     }
    
   }
+  async function messageHandler(){
+    const sortedStrings = [id, userBasicInfo.username].sort();
+    const navigationUrl = sortedStrings[0] +"-" + sortedStrings[1]
+
+    const docRef = doc(db, "user", userBasicInfo.username);
+    const docSnap = await getDoc(docRef);
+    let docSnapDataMessage
+    const docSnapData = docSnap.data()
+    if(!docSnapData.message){
+        docSnapData.message = [id]
+    }else{
+        const updatedArray = docSnapData.message.filter((arr) => arr !== id);
+        docSnapDataMessage = updatedArray
+        docSnapDataMessage.push(id)
+    }
+    
+
+    const objRef = doc(db, "user", userBasicInfo.username);
+
+    await updateDoc(objRef, {
+      message: docSnapDataMessage
+    },
+    { merge: true });
+
+    const docRef2 = doc(db, "user", id);
+    const docSnap2 = await getDoc(docRef2);
+    const docSnapData2 = docSnap2.data()
+    let docSnapDataMessage2
+    if(!docSnapData2.message){
+        docSnapData2.message = [userBasicInfo.username]
+    }else{
+        const updatedArray = docSnapData2.message.filter((arr) => arr !== userBasicInfo.username);
+        docSnapDataMessage2 = updatedArray
+        docSnapDataMessage2.push(userBasicInfo.username)
+    }
+    
+
+    const objRef2 = doc(db, "user", id);
+
+    await updateDoc(objRef2, {
+      message: docSnapDataMessage2
+    },
+    { merge: true });
+
+    navigate('/messages/' + navigationUrl)
+  }
   return (
     <>
       <div className="flex dark:bg-black min-h-screen">
@@ -236,7 +285,7 @@ const OtherProfile = () => {
                     </button>
                   )}
 
-                  <button className="px-3 max-[500px]:pt-2 py-[6px] rounded-md bg-gray-100 hover:bg-gray-200 font-semibold text-sm dark:bg-neutral-700 hover:dark:bg-neutral-800">
+                  <button onClick={messageHandler} className="px-3 max-[500px]:pt-2 py-[6px] rounded-md bg-gray-100 hover:bg-gray-200 font-semibold text-sm dark:bg-neutral-700 hover:dark:bg-neutral-800">
                     Message
                   </button>
                 </div>
@@ -273,7 +322,7 @@ const OtherProfile = () => {
             </div>
           </div>
           <div className=" px-10 max-[500px]:px-2 grid grid-cols-3 gap-2 ">
-            {userData.post && userData.post.reverse().map((item) => <Post key={id} id={item} />)}
+            {userData.post && userData.post.reverse().map((item) => <Post key={item} id={item} />)}
           </div>
         </div>
       </div>
@@ -375,7 +424,7 @@ function Following({ id }) {
 }
 function Post({ id }) {
   const [data, setData] = useState(false);
-
+  const navigate = useNavigate()
   useEffect(() => {
     async function fetch() {
       const docRef = doc(db, "post", id);
@@ -392,7 +441,7 @@ function Post({ id }) {
   }
   return (
     <>
-      <div
+      <div onClick={()=> navigate("/post/" + id)}
         className=" cursor-pointer pics relative"
         style={{ paddingBottom: "100%" }}
       >

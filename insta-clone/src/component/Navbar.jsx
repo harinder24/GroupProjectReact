@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
@@ -10,16 +10,31 @@ import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Context from "../context";
 
 
 const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navigate = useNavigate();
+  const {
+  
+    setUserBasicInfo,
+   
+  } = useContext(Context);
+  function menuHandler(){
+    const x = isMenuOpen
+    setIsMenuOpen(!x)
+  }
+  function logOuthandler(){
+    setUserBasicInfo({});
+    navigate("/login");
+  }
  const {userBasicInfo} = useContext(Context)
   
   return (
     <nav className="px-3 pt-2 pb-5 bg-white flex flex-col  box-border gap-y-2 w-[244px] h-screen border-r-[1px] border-solid border-[var(--border)]  z-[5] max-[1264px]:w-[72.8px] max-[770px]:fixed max-[770px]:w-full max-[770px]:flex-row max-[770px]:bottom-0 max-[770px]:h-fit max-[770px]:p-0 max-[770px]:justify-evenly dark:bg-black navBartopborder">
-      <div className="mt-2 px-3 pt-[25px] mb-[19px] box-border max-[770px]:hidden rounded-lg min-[770px]:max-[1264px]:p-3 hover:min-[770px]:max-[1264px]:bg-gray-200 hover:dark:min-[770px]:max-[1264px]:bg-zinc-800 cursor-pointer logoHoveNav">
+      <div className="mt-2 px-3 pt-[25px] mb-[19px] box-border max-[770px]:hidden rounded-lg min-[770px]:max-[1264px]:p-3 hover:min-[770px]:max-[1264px]:bg-gray-200 hover:dark:min-[770px]:max-[1264px]:bg-zinc-800 cursor-default logoHoveNav">
         <img
           src="/src/public/instagramlogotext.png"
           className="h-[29px] w-[103px] object-cover object-navinstalogo max-[1264px]:hidden dark:object-navinstalogodark"
@@ -78,10 +93,25 @@ const NavBar = () => {
         <div className="pl-4 text-xs max-[1264px]:hidden ">Profile</div>
       </div>
       </Link>
+      <div className="mt-auto">
+      <div onClick={menuHandler} className="relative max-[770px]:hidden">
       <div className="px-[5px] py-3 min-[290px]:px-3 min-[770px]:justify-center min-[1264px]:justify-start flex items-center mt-auto rounded-lg max-[770px]:hidden hover:min-[770px]:bg-gray-200  cursor-pointer  dark:hover:min-[770px]:bg-zinc-800 logoHoveNav">
+       
         <MenuOutlinedIcon className="w-[24px] h-[24px]"/>
         <div className="pl-4 text-xs max-[1264px]:hidden">More</div>
-      </div>
+        
+        </div>
+    
+      {isMenuOpen &&
+        <div onClick={logOuthandler} className="absolute top-[-55px]  h-10 w-[100px] bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 hover:dark:bg-neutral-700  cursor-pointer rounded-xl">
+       <div className="h-10 w-[100px] flex justify-center items-center ">
+          <div>
+            Log out
+          </div>
+       </div>
+        </div> }
+        </div>
+        </div>
     </nav>
   );
 };

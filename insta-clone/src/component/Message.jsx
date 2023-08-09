@@ -85,7 +85,7 @@ const searchString = search;
       </div>
       <div className="flex-grow flex-col flex h-screen overflow-auto hideDaBar">
         <div className="flex  items-center justify-center">
-          <div className="flex flex-grow flex-row h-8 items-center bg-neutral-800 my-5 mx-2 max-w-[600px] bg-gray-200 box-border rounded-[8px] px-2 ">
+          <div className="flex flex-grow flex-row h-8 items-center dark:bg-neutral-800 my-5 mx-2 max-w-[600px] bg-gray-200 box-border rounded-[8px] px-2 ">
             <SearchOutlinedIcon className=" text-gray-500" />
 
             <input

@@ -255,7 +255,8 @@ function PicPost({ url, numcomment, id, type, comment, captions, user }) {
   const [isFav, setIsFav] = useState(false);
   const [isSav, setIsSav] = useState(false);
   const [commentVal, setCommentVal] = useState("");
-  const { setUserBasicInfo, userBasicInfo } = useContext(Context);
+  const { setUserBasicInfo, userBasicInfo, followingSuggestion,
+    SetFollowingSuggestion, } = useContext(Context);
   const [isFollowing, setIsFollowing] = useState(false);
   const [numberOfCom, setNumberOfCom] = useState(0);
   const [showComment, setShowComment] = useState(false);
@@ -436,6 +437,10 @@ function PicPost({ url, numcomment, id, type, comment, captions, user }) {
       { merge: true }
     );
 
+    const fSuggestion = followingSuggestion
+    const updatdedSuggestions = fSuggestion.filter((arr) => arr.id !== user)
+    console.log(updatdedSuggestions, "u");
+      SetFollowingSuggestion(updatdedSuggestions)
     setIsFollowing(true);
   }
   function CloseFollowersHandler(){
@@ -520,7 +525,7 @@ function PicPost({ url, numcomment, id, type, comment, captions, user }) {
             alt=""
           />
         ) : (
-          <video className="w-full max-h-[90vh] px-2" controls>
+          <video className="w-full max-h-[90vh] px-2 outline-0" controls>
             <source src={url} type="video/mp4" />
           </video>
         )}

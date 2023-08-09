@@ -121,7 +121,7 @@ export default function Messages() {
         </div>
       </div>
       <div className="absolute top-0">
-        <div className="sticky top-0 w-screen border-b-[1px] border-solid border-[var(--border)] bg-black z-20 h-10 min-[770px]:ml-[73px] min-[770px]:w-[calc(100vw-73px)] min-[1264px]:ml-[244px] min-[1264px]:w-[calc(100vw-244px)]">
+        <div className="sticky top-0 w-screen border-b-[1px] border-solid border-[var(--border)] bg-white dark:bg-black z-20 h-10 min-[770px]:ml-[73px] min-[770px]:w-[calc(100vw-73px)] min-[1264px]:ml-[244px] min-[1264px]:w-[calc(100vw-244px)]">
                 <div className="flex h-10 items-center flex-row gap-2 ml-4">
                     <img src={otherUserInfo.profileimg} className="h-6 w-6 rounded-full object-cover" alt="" />
                     <div>{otherUserInfo.username}</div>
