@@ -37,7 +37,7 @@ const NavBar = () => {
       <div className="mt-2 px-3 pt-[25px] mb-[19px] box-border max-[770px]:hidden rounded-lg min-[770px]:max-[1264px]:p-3 hover:min-[770px]:max-[1264px]:bg-gray-200 hover:dark:min-[770px]:max-[1264px]:bg-zinc-800 cursor-default logoHoveNav">
         <img
                       
-          src="https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/instagramlogotext.png?raw=true"
+          src="https://static.cdninstagram.com/rsrc.php/v3/yS/r/ajlEU-wEDyo.png"
           className="h-[29px] w-[103px] object-cover object-navinstalogo max-[1264px]:hidden dark:object-navinstalogodark"
           alt=""
         />

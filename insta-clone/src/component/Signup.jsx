@@ -106,7 +106,7 @@ try {
               email: email,
               username: username,
               fullname: fullName,
-              profileimg: "/src/public/profile.jpg",
+              profileimg: "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F",
               likes: [],
               following:[],
               followers:[],
@@ -265,10 +265,10 @@ try {
             </p>
             <div className=" flex flex-row gap-2 my-[10px] justify-center max-[380px]:flex-wrap">
               <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=ig_mid%3D300EA2EC-5727-4CBF-8DAA-E80FF52EB07E%26utm_campaign%3DloginPage%26utm_content%3Dlo%26utm_source%3Dinstagramweb%26utm_medium%3Dbadge&pli=1">
-                <img className="h-10" src="https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/playstore.png?raw=true" alt="" />
+                <img className="h-10" src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png" alt="" />
               </a>
               <a href="ms-windows-store://pdp/?productid=9nblggh5l9xt&referrer=appbadge&source=www.instagram.com&mode=mini&pos=0%2C0%2C1920%2C1020">
-                <img className="h-10" src="https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/microsoft.png?raw=true" alt="" />
+                <img className="h-10" src="https://static.cdninstagram.com/rsrc.php/v3/yu/r/EHY6QnZYdNX.png" alt="" />
               </a>
             </div>
           </div>

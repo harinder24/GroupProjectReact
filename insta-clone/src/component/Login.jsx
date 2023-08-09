@@ -15,7 +15,7 @@ const Login  = () => {
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = ["https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/image1.png?raw=true", "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/image2.png?raw=true", "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/image3.png?raw=true", "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/image4.png?raw=true"];
+  const images = ["https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot1.png?__d=www", "https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot2.png?__d=www", "https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot3.png?__d=www", "https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot4.png?__d=www"];
   useEffect(()=>{
     if(userBasicInfo.email != null){
       navigate('/')
@@ -206,10 +206,10 @@ const Login  = () => {
             </p>
             <div className=" flex flex-row gap-2 my-[10px] justify-center max-[380px]:flex-wrap">
               <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=ig_mid%3D300EA2EC-5727-4CBF-8DAA-E80FF52EB07E%26utm_campaign%3DloginPage%26utm_content%3Dlo%26utm_source%3Dinstagramweb%26utm_medium%3Dbadge&pli=1">
-                <img className="h-10" src="https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/playstore.png?raw=true" alt="" />
+                <img className="h-10" src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png" alt="" />
               </a>
               <a href="ms-windows-store://pdp/?productid=9nblggh5l9xt&referrer=appbadge&source=www.instagram.com&mode=mini&pos=0%2C0%2C1920%2C1020">
-                <img className="h-10 "  src="https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/microsoft.png?raw=true" alt="" />
+                <img className="h-10 "  src="https://static.cdninstagram.com/rsrc.php/v3/yu/r/EHY6QnZYdNX.png" alt="" />
               </a>
             </div>
           </div>

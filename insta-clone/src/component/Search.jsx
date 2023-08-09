@@ -31,7 +31,7 @@ export default function Search() {
     
       for(let i = 0; i < documents.length; i++){
           if(!documents[i].profileimg){
-            documents[i].profileimg = "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.jpg?raw=true"
+            documents[i].profileimg = "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F"
           }
       }
       SetFollowingSuggestion(documents)
@@ -229,7 +229,7 @@ return(
               </div>
 </>)
 }
-const Suggestions = ({id, profileimg = "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"}) => {
+const Suggestions = ({id, profileimg = "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F"}) => {
     const { setUserBasicInfo, userBasicInfo } = useContext(Context);
     const [isFollowing, setIsFollowing] = useState(false)
     const [profilePic, setPropfilepic] = useState("");

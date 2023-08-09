@@ -111,13 +111,13 @@ await updateDoc(documentRef, {
 
 
     await updateDoc(documentRef, {
-      profileimg: "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"
+      profileimg: "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F"
     });
           setLocalLink("");
       
           setStage(true);
-          setUserBasicInfo({...userData, profileimg: "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"})
-          setUserData({...userData, profileimg: "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"})
+          setUserBasicInfo({...userData, profileimg: "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F"})
+          setUserData({...userData, profileimg: "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F"})
           setIsEditing(false)
   }
   const handleDrop = (event) => {
@@ -220,7 +220,7 @@ if(type == "followers"){
                   >
                     Select from computer
                   </button>
-                  {userData.profileimg && userData.profileimg == "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true" ? <></> : 
+                  {userData.profileimg && userData.profileimg == "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F" ? <></> : 
                <button onClick={removeProfilePic} className=" cursor-pointer p-2 bg-blue-500 rounded-xl hover:bg-blue-600 font-bold text-white">
                   Remove profile picture
                </button>}
@@ -252,7 +252,7 @@ if(type == "followers"){
                 src={
                   userData.profileimg
                     ? userData.profileimg
-                    : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"
+                    : "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F"
                 }
                 alt=""
               />
@@ -378,7 +378,7 @@ const navigate = useNavigate()
 <div className=" p-2 overflow-auto hideDaBar">
 <div className="flex justify-between items-center">
   <div  onClick={()=> navigate("/profiles/" + id)}   className="flex items-center gap-2 cursor-pointer">
-  <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"} alt="" />
+  <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F"} alt="" />
   <div className=" text-sm">
     {id}
   </div>
@@ -411,7 +411,7 @@ function Followers({id , unFollowingHandler}){
 <div className=" p-2 overflow-auto hideDaBar">
 <div className="flex justify-between items-center">
   <div onClick={()=> navigate("/profiles/" + id)}  className="flex items-center cursor-pointer gap-2">
-  <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "https://github.com/harinder24/GroupProjectReact/blob/main/insta-clone/src/public/profile.png?raw=true"}  alt="" />
+  <img className=" h-8 w-8 rounded-full object-cover" src={ userData.profileimg ? userData.profileimg : "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F"}  alt="" />
   <div className=" text-sm">
     {id}
   </div>
