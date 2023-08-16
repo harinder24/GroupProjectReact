@@ -106,7 +106,7 @@ try {
               email: email,
               username: username,
               fullname: fullName,
-              profileimg: "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=1&_nc_ohc=E8cry8APuaMAX8YXlJm&edm=AAAAAAABAAAA&ccb=7-5&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-5&oh=00_AfDNP3IqQ5YRy1GVa_cbwhMFW3BaZP7Iyld0WZVtNJ44Tg&oe=64D8E54F",
+              profileimg: "https://res.cloudinary.com/dddggrofv/image/upload/v1691608835/profile_lxq8sq.jpg",
               likes: [],
               following:[],
               followers:[],
